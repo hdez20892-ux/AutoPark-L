@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.autopark-navbar {
+    min-height: 82px;
+    background-color: #C4E3FF;
+    border-bottom: 1px solid rgba(71, 84, 103, 0.12);
+    position: relative;
+    z-index: 1030;
+}
+
+.navbar-logo {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    display: block;
+}
+
+.navbar-title {
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #101828;
+    line-height: 1;
+}
+
+.autopark-navbar .navbar-brand {
+    text-decoration: none;
+}
+
+.autopark-navbar .nav-link {
+    min-width: 96px;
+    min-height: 40px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
+    font-weight: 400;
+    color: #475467;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.autopark-navbar .wide-link {
+    min-width: 128px;
+}
+
+.autopark-navbar .nav-link:hover,
+.autopark-navbar .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #101828;
+}
+
+.autopark-navbar .nav-link:active {
+    transform: scale(0.97);
+}
+
+.autopark-navbar .nav-link.active {
+    background-color: #FFFFFF;
+    color: #101828;
+}
+
+.logout-button {
+    min-width: 144px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.autopark-navbar .navbar-toggler {
+    border: 1px solid #475467;
+    box-shadow: none;
+}
+
+.autopark-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(132, 215, 230, 0.45);
+}
+
+.guest-only {
+    display: none;
+}
+
+body[data-navbar-mode="guest"] .auth-only {
+    display: none !important;
+}
+
+body[data-navbar-mode="guest"] .guest-only {
+    display: list-item;
+}
+
+body:not([data-navbar-mode="guest"]) .guest-only {
+    display: none !important;
+}
+
+@media (max-width: 991.98px) {
+    .autopark-navbar .navbar-collapse {
+        padding: 18px 0 8px;
+    }
+
+    .autopark-navbar .navbar-nav {
+        align-items: stretch !important;
+        gap: 8px;
+    }
+
+    .autopark-navbar .nav-link,
+    .autopark-navbar .wide-link,
+    .logout-button {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .navbar-title {
+        font-size: 21px;
+    }
+}

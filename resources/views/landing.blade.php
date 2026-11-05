@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoPark</title>
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/navbar/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+</head>
+
+<body>
+
+    @include('components.navbar')
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="container-fluid p-0">
+
+                    <div class="row g-5 align-items-start">
+
+                        <div class="col-lg-6">
+
+                            <div class="hero-copy">
+
+                                <h1>
+                                    Encuentra estacionamiento
+                                    <br>
+                                    sin perder tiempo
+                                </h1>
+
+                                <p>
+                                    Busca, compara y reserva espacios
+                                    disponibles en AutoPark desde una
+                                    sola plataforma.
+                                </p>
+
+                                <div class="hero-actions">
+
+                                    <a href="{{ url('/busqueda') }}" class="btn btn-main">
+                                        Buscar estacionamiento
+                                    </a>
+
+                                    <button type="button" class="btn btn-secondary" id="btnPublicar">
+                                        Publicar mi espacio
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <aside class="nearby-panel card">
+
+                                <h2>Disponibilidad cerca de ti</h2>
+
+                                <article class="parking-preview card">
+
+                                    <div class="parking-preview-image">
+
+                                        <img src="{{ asset('assets/images/logo-autopark.png') }}"
+                                            alt="Logotipo de AutoPark">
+
+                                    </div>
+
+                                    <div class="parking-preview-info">
+
+                                        <h3>Centro Pachuca</h3>
+
+                                        <p class="preview-zone">
+                                            Zona Centro
+                                        </p>
+
+                                        <p class="preview-price">
+                                            $25 MXN / hora
+                                        </p>
+
+                                        <div class="preview-footer">
+
+                                            <span class="availability-badge badge rounded-pill">
+                                                6 espacios libres
+                                            </span>
+
+                                            <button type="button" class="btn btn-detail" id="btnDetalle">
+                                                Ver detalle
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+                            </aside>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BENEFICIOS -->
+        <section class="features-section">
+
+            <h2>Todo lo que necesitas</h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <article class="feature-card card h-100">
+
+                        <div class="feature-header">
+
+                            <span class="feature-number">
+
+                                <img src="{{ asset('assets/icons/search.svg') }}" alt="" class="feature-icon"
+                                    aria-hidden="true">
+
+                            </span>
+
+                            <h3>Busca rápido</h3>
+
+                        </div>
+
+                        <p>
+                            Encuentra espacios por zona y disponibilidad.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <article class="feature-card card h-100">
+
+                        <div class="feature-header">
+
+                            <span class="feature-number">
+
+                                <img src="{{ asset('assets/icons/calendar-check.svg') }}" alt=""
+                                    class="feature-icon" aria-hidden="true">
+
+                            </span>
+
+                            <h3>Reserva con claridad</h3>
+
+                        </div>
+
+                        <p>
+                            Consulta precio, horario y detalles
+                            antes de reservar.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <article class="feature-card card h-100">
+
+                        <div class="feature-header">
+
+                            <span class="feature-number">
+
+                                <img src="{{ asset('assets/icons/gear.svg') }}" alt="" class="feature-icon"
+                                    aria-hidden="true">
+
+                            </span>
+
+                            <h3>Administra tus espacios</h3>
+
+                        </div>
+
+                        <p>
+                            Publica y controla disponibilidad
+                            desde tu cuenta.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer class="landing-footer">
+            AutoPark · estacionamiento simple, claro y accesible
+        </footer>
+
+    </main>
+
+    <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/landing.js') }}"></script>
+
+</body>
+
+</html>
