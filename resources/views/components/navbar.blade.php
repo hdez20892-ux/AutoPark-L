@@ -10,14 +10,10 @@
 
         </a>
 
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks"
             aria-controls="navbarLinks" aria-expanded="false" aria-label="Abrir navegación">
-
             <span class="navbar-toggler-icon"></span>
-
         </button>
-
 
         <div class="collapse navbar-collapse" id="navbarLinks">
 
@@ -35,7 +31,6 @@
                     </a>
                 </li>
 
-
                 @if (session()->has('autopark_usuario'))
                     <li class="nav-item">
                         <a href="{{ url('/reservas') }}" class="nav-link">
@@ -44,7 +39,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('/espacios') }}" class="nav-link">
+                        <a href="{{ route('estacionamientos.index') }}"
+                            class="nav-link {{ request()->routeIs('estacionamientos.*') ? 'active' : '' }}">
                             Mis espacios
                         </a>
                     </li>
