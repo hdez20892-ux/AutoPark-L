@@ -56,3 +56,80 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## AutoPark Sistema de Gestión de Estacionamientos
+
+AutoPark es una plataforma web desarrollada con **Laravel** (backend) y **Bootstrap 5** (frontend) diseñada para optimizar la búsqueda, reserva y gestión de espacios de estacionamiento en tiempo real, ofreciendo una experiencia fluida, segura e intuitiva para los usuarios.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Descripción del Proyecto
+Es una solución integral en la nube ideada para transformar y simplificar la gestión de estacionamientos en entornos urbanos. La plataforma permite a los conductores localizar y gestionar espacios disponibles de manera eficiente, rápida y transparente.
+----------------------------------------------------------
+### Problema que resuelve
+Buscar un lugar para estacionar en zonas concurridas suele generar pérdida de tiempo, congestión vehicular y molestia en los conductores. Asimismo, muchos establecimientos carecen de herramientas digitales para monitorear su ocupación real y ofrecer información precisa a los usuarios.
+-----------------------------------------------------------
+### Solución propuesta
+AutoPark conecta a los usuarios directamente con la disponibilidad de los estacionamientos mediante una arquitectura web responsiva y moderna:
+- **Módulo de Usuario:** Interfaz intuitiva donde se pueden explorar estacionamientos por nombre o zona, consultar ubicaciones y mantener la información del perfil protegida mediante un sistema de validación dinámica en tiempo real.
+- **Arquitectura Backend:** Estructura escalable basada en el patrón MVC (Modelo-Vista-Controlador) de Laravel, facilitando el control de registros, el filtrado preciso y la manipulación segura de datos mediante operaciones CRUD.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 🛠️ Tecnologías y Herramientas
+- **Backend:** PHP 8.x, Laravel Framework
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+), Bootstrap 5
+- **Base de Datos:** 
+- **Control de Versiones:** Git & GitHub
+
+---
+
+## ✨ Características Principales
+- 🔍 **Búsqueda Dinámica:** Filtro de estacionamientos por nombre o ubicación con actualización inmediata de resultados.
+- 🛡️ **Validación de Perfil en Tiempo Real:** Verificación activa de campos obligatorios con alertas visuales al instante y comprobación de formato válido de correo electrónico (`@`).
+- 👁️ **Seguridad e Interacción:** Botón dinámico para mostrar u ocultar la contraseña en los formularios de acceso y edición.
+- 📱 **Diseño Responsivo:** Interfaz completamente optimizada para dispositivos móviles, tablets y computadoras de escritorio.
+
+---
+
+## 📸 Capturas de Pantalla
+
+| Módulo | Captura del Resultado Final |
+|---|---|
+| **Búsqueda de Estacionamientos** | `![Búsqueda](img/screenshots/busqueda.png)` |
+| **Validación de Perfil** | `![Perfil](img/screenshots/perfil_validacion.png)` |
+| **Vista Principal** | `![Home](img/screenshots/home.png)` |
+
+---
+
+## 👥 Equipo de Desarrollo
+
+* **Fernanda Itzel Hernández Pérez** — *Desarrollo Frontend & UX/UI*
+  * Implementación del módulo de perfil de usuario, lógica de validaciones activas en tiempo real (campos obligatorios y formato de email) e integración del control visual para mostrar/ocultar contraseñas.
+* **Fernando Aritzel** — *Desarrollo Frontend & Interacción*
+  * Optimización de flujos de interacción, notificaciones visuales del sistema y diseño dinámico de formularios.
+* **Daniela Doñu** — *Desarrollo de Funcionalidades & Filtros*
+  * Desarrollo del motor de búsqueda y filtrado de estacionamientos por nombre/zona con renderizado dinámico de resultados.
+* **Guillermo Ruiz** — *Integración & Arquitectura Backend*
+  * Estructuración del proyecto en Laravel, control de calidad e integración de módulos.
+* **Johan Baru** — *QA & Pruebas de Software*
+  * Verificación de la interfaz, pruebas de integración y corrección de errores de usuario.
+
+---
+
+## ⚙️ Instalación y Configuración Local
+
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
+
+### Prerrequisitos
+- PHP (>= 8.1)
+- Composer
+- Node.js & NPM
+- Servidor MySQL (XAMPP, WAMP o equivalente)
+
+### Pasos
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/hdez20892-ux/AutoPark-L.git](https://github.com/hdez20892-ux/AutoPark-L.git)
+   cd AutoPark-L
