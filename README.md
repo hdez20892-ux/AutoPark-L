@@ -100,7 +100,7 @@ podemos conocer como quedo a nivel interfaz este aun no cuenta con un registro a
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f058f410-8f4f-4388-8c22-9b46f89b00e1" />
 
-**Esta es la parte en la cual se integro la de Crea tu cuenta es en la int5erfaz correspondiente**
+**Esta es la parte en la cual se integro la de Crea tu cuenta es en la interfaz correspondiente**
 <img width="1364" height="687" alt="image" src="https://github.com/user-attachments/assets/cd631857-c60d-4efd-b63a-974650014f99" />
 
 ** Esta es en la parte de bisecar y reservar estacionamiento en la cual como podemos ver elaboramos un CRUD para eliminar y editar**
