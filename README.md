@@ -76,49 +76,52 @@ AutoPark conecta a los usuarios directamente con la disponibilidad de los estaci
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 🛠️ Tecnologías y Herramientas
+## Tecnologías y Herramientas
 - **Backend:** PHP 8.x, Laravel Framework
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+), Bootstrap 5
-- **Base de Datos:** 
+- **Frontend:** HTML5, CSS3, JavaScript ,Bootstrap 5
+- **Base de Datos:** en este caso se ocupara en su momento psql
 - **Control de Versiones:** Git & GitHub
 
----
+------------------------------------------------------------------------------------
 
-## ✨ Características Principales
-- 🔍 **Búsqueda Dinámica:** Filtro de estacionamientos por nombre o ubicación con actualización inmediata de resultados.
-- 🛡️ **Validación de Perfil en Tiempo Real:** Verificación activa de campos obligatorios con alertas visuales al instante y comprobación de formato válido de correo electrónico (`@`).
-- 👁️ **Seguridad e Interacción:** Botón dinámico para mostrar u ocultar la contraseña en los formularios de acceso y edición.
-- 📱 **Diseño Responsivo:** Interfaz completamente optimizada para dispositivos móviles, tablets y computadoras de escritorio.
+## Características Principales
+- **Búsqueda Dinámica:** Filtro de estacionamientos por nombre o ubicación con actualización inmediata de resultados.
+- **Validación de Perfil en Tiempo Real:** Verificación activa de campos obligatorios con alertas visuales al instante y comprobación de formato válido de correo electrónico (`@`).
+- **Seguridad e Interacción:** Botón dinámico para mostrar u ocultar la contraseña en los formularios de acceso y edición.
+- **Diseño Responsivo:** Interfaz completamente optimizada para dispositivos móviles, tablets y computadoras de escritorio.
 
----
+--------------------------------------------------------------------------------------------
 
-## 📸 Capturas de Pantalla
+## Capturas de Pantalla
+En esta parte se mostrara el resultado final de mediante unas evidencias fotográficas en donde 
+podemos conocer como quedo a nivel interfaz este aun no cuenta con un registro a la base de datos correspondiente, ya que la practica consistió en hacer un **CRUD** con las pantallas que las necesitara dentro del proyecto que ya teniamos respetando lo que ya teniamos elaborado.
 
-| Módulo | Captura del Resultado Final |
-|---|---|
-| **Búsqueda de Estacionamientos** | `![Búsqueda](img/screenshots/busqueda.png)` |
-| **Validación de Perfil** | `![Perfil](img/screenshots/perfil_validacion.png)` |
-| **Vista Principal** | `![Home](img/screenshots/home.png)` |
+**Esta es la parte de el inicio en donde se encuentra parte de buscar estacionamiento y la parte de publicar mi espacio**
 
----
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f058f410-8f4f-4388-8c22-9b46f89b00e1" />
 
-## 👥 Equipo de Desarrollo
+**Esta es la parte en la cual se integro la de Crea tu cuenta es en la int5erfaz correspondiente**
+<img width="1364" height="687" alt="image" src="https://github.com/user-attachments/assets/cd631857-c60d-4efd-b63a-974650014f99" />
 
-* **Fernanda Itzel Hernández Pérez** — *Desarrollo Frontend & UX/UI*
-  * Implementación del módulo de perfil de usuario, lógica de validaciones activas en tiempo real (campos obligatorios y formato de email) e integración del control visual para mostrar/ocultar contraseñas.
-* **Fernando Aritzel** — *Desarrollo Frontend & Interacción*
-  * Optimización de flujos de interacción, notificaciones visuales del sistema y diseño dinámico de formularios.
-* **Daniela Doñu** — *Desarrollo de Funcionalidades & Filtros*
-  * Desarrollo del motor de búsqueda y filtrado de estacionamientos por nombre/zona con renderizado dinámico de resultados.
-* **Guillermo Ruiz** — *Integración & Arquitectura Backend*
-  * Estructuración del proyecto en Laravel, control de calidad e integración de módulos.
-* **Johan Baru** — *QA & Pruebas de Software*
-  * Verificación de la interfaz, pruebas de integración y corrección de errores de usuario.
+** Esta es en la parte de bisecar y reservar estacionamiento en la cual como podemos ver elaboramos un CRUD para eliminar y editar**
+<img width="663" height="658" alt="image" src="https://github.com/user-attachments/assets/a600c20e-d4be-41b6-83bf-55086cfe0d07" />
 
----
+Nota: No se agrego mas ya que en este proyecto no se necesitaba muchos crud dolo se agrego en la parte en donde se necesitara.
+------------------------------------------------------------------------------------
 
-## ⚙️ Instalación y Configuración Local
+## Equipo de Desarrollo
+**Fernanda Hernández** Lider  y backend
+**Johan Baru** backend
+**Daniela Doñu Bolteada** Frontend
+**Aritzel** Frontend
+**Guillermo Ruiz** QUA
+**Mario** QUA
 
+
+--------------------------------------------------------------------------------
+
+## Instalación y Configuración Local
+Para poder hacer la instalaciones correspondientes seguimos pasos una por un documento de instalación de una practica anterior por lo cuales recomendable seguir los siguientes pasos correspondientes:
 Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
 ### Prerrequisitos
@@ -126,10 +129,9 @@ Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 - Composer
 - Node.js & NPM
 - Servidor MySQL (XAMPP, WAMP o equivalente)
+### Pasos 
+instalar la parte del Composer 
+con el comando composer install
+<img width="598" height="352" alt="image" src="https://github.com/user-attachments/assets/7bd896ea-bb2a-490c-bfd6-2faf84f95316" />
+<img width="595" height="292" alt="image" src="https://github.com/user-attachments/assets/01185671-9fac-43a7-9773-e676f99a318d" />
 
-### Pasos
-
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/hdez20892-ux/AutoPark-L.git](https://github.com/hdez20892-ux/AutoPark-L.git)
-   cd AutoPark-L
