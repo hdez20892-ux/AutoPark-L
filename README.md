@@ -111,8 +111,10 @@ podemos conocer como quedo a nivel interfaz este aun no cuenta con un registro a
 **Edita**
 <img width="1431" height="715" alt="image" src="https://github.com/user-attachments/assets/06d8228b-8c1c-4b68-9faa-47e30c40de51" />
 **Agrega**
-**En esta imagen se muestra la interfaz del formulario agregar, para que ete la muestre en la interfaz de Mis Espacios.**
+En esta imagen se muestra la interfaz del formulario agregar, para que ete la muestre en la interfaz de Mis Espacios.
+
 <img width="942" height="815" alt="image" src="https://github.com/user-attachments/assets/c665b8cd-c4bd-456f-b848-c100b9c9fc52" />
+
 **Aquí mostrara como se agregó correctamente el estacionamiento**
 <img width="1437" height="912" alt="image" src="https://github.com/user-attachments/assets/d96759ff-d4d3-49b4-89cf-f87ebcd91cfd" />
 
