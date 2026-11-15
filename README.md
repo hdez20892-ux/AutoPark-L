@@ -91,47 +91,144 @@ AutoPark conecta a los usuarios directamente con la disponibilidad de los estaci
 - **Diseño Responsivo:** Interfaz completamente optimizada para dispositivos móviles, tablets y computadoras de escritorio.
 
 --------------------------------------------------------------------------------------------
-
 ## Capturas de Pantalla
-En esta parte se mostrara el resultado final de mediante unas evidencias fotográficas en donde 
-podemos conocer como quedo a nivel interfaz este aun no cuenta con un registro a la base de datos correspondiente, ya que la practica consistió en hacer un **CRUD** con las pantallas que las necesitara dentro del proyecto que ya teniamos respetando lo que ya teniamos elaborado.
+
+En esta parte se mostrará el resultado final mediante evidencias fotográficas, en donde podemos conocer cómo quedó a nivel de interfaz. Aunque aún no cuenta con un registro masivo en la base de datos correspondiente, la práctica consistió en hacer un **CRUD** con las pantallas que lo necesitaban dentro del proyecto que ya teníamos, respetando lo elaborado previamente.
+
+<br>
 
 **Esta es la parte de el inicio en donde se encuentra parte de buscar estacionamiento y la parte de publicar mi espacio**
 
+<br>
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f058f410-8f4f-4388-8c22-9b46f89b00e1" />
+<br>
 
-**Esta es la parte en la cual se integro la de Crea tu cuenta es en la interfaz correspondiente**
+**Esta es la parte en la cual se integró la de Crea tu cuenta en la interfaz correspondiente**
+
+<br>
 <img width="1364" height="687" alt="image" src="https://github.com/user-attachments/assets/cd631857-c60d-4efd-b63a-974650014f99" />
+<br>
 
-** Esta es en la parte de bisecar y reservar estacionamiento en la cual como podemos ver elaboramos un CRUD para eliminar y editar**
-<img width="663" height="658" alt="image" src="https://github.com/user-attachments/assets/a600c20e-d4be-41b6-83bf-55086cfe0d07" />
+**En esta parte tenemos la de estacionamientos en la cual se encuentra el CRUD correspondiente en la cual podemos editar y eliminar espacios reservados**
 
-Nota: No se agrego mas ya que en este proyecto no se necesitaba muchos crud dolo se agrego en la parte en donde se necesitara.
+* **Muestra:**
+<br>
+<img width="1422" height="927" alt="image" src="https://github.com/user-attachments/assets/e3377dc6-55a2-45a4-a58f-73ee1006d01e" />
+<br>
+
+* **Elimina:**
+<br>
+<img width="1441" height="852" alt="image" src="https://github.com/user-attachments/assets/ddad3193-eb2e-4449-9463-d66909babe3f" />
+<br>
+
+* **Edita:**
+<br>
+<img width="1431" height="715" alt="image" src="https://github.com/user-attachments/assets/06d8228b-8c1c-4b68-9faa-47e30c40de51" />
+<br>
+
+* **Agrega:**
+En esta imagen se muestra la interfaz del formulario agregar, para que este la muestre en la interfaz de Mis Espacios.
+
+<br>
+<img width="942" height="815" alt="image" src="https://github.com/user-attachments/assets/c665b8cd-c4bd-456f-b848-c100b9c9fc52" />
+<br>
+
+**Aquí mostrará cómo se agregó correctamente el estacionamiento**
+
+<br>
+<img width="1437" height="912" alt="image" src="https://github.com/user-attachments/assets/d96759ff-d4d3-49b4-89cf-f87ebcd91cfd" />
+<br>
+
+> **Nota:** No se agregó más ya que en este proyecto no se necesitaban muchos CRUDs, solo se agregó en la parte en donde se necesitaba.
 ------------------------------------------------------------------------------------
-
 ## Equipo de Desarrollo
-**Fernanda Hernández** Lider  y backend
-**Johan Baru** backend
-**Daniela Doñu Bolteada** Frontend
-**Aritzel** Frontend
-**Guillermo Ruiz** QUA
-**Mario** QUA
 
+| Integrante | Rol / Área |
+| :--- | :--- |
+| **Fernanda Hernández** | Líder y Backend |
+| **Johan Baru** | Backend |
+| **Daniela Doñu Bolteada** | Frontend |
+| **Aritzel** | Frontend |
+| **Guillermo Ruiz** | QA |
+| **Mario** | QA |
 
 --------------------------------------------------------------------------------
 
 ## Instalación y Configuración Local
-Para poder hacer la instalaciones correspondientes seguimos pasos una por un documento de instalación de una practica anterior por lo cuales recomendable seguir los siguientes pasos correspondientes:
+Para poder hacer las instalaciones correspondientes seguimos pasos uno por uno de un documento de instalación de una práctica anterior, por lo cual es recomendable seguir las siguientes instrucciones:
+
 Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
-### Prerrequisitos
-- PHP (>= 8.1)
-- Composer
-- Node.js & NPM
-- Servidor MySQL (XAMPP, WAMP o equivalente)
-### Pasos 
-instalar la parte del Composer 
-con el comando composer install
-<img width="598" height="352" alt="image" src="https://github.com/user-attachments/assets/7bd896ea-bb2a-490c-bfd6-2faf84f95316" />
-<img width="595" height="292" alt="image" src="https://github.com/user-attachments/assets/01185671-9fac-43a7-9773-e676f99a318d" />
+### Prerrequisitos Previos
 
+### 1. Antes de clonar o iniciar el proyecto, verifica que cuentas con lo siguiente:
+- PHP (versión 8.2 o superior recomendada).
+- Composer (el gestor de dependencias de PHP).
+- Node.js y NPM (para compilar assets de frontend si aplica).
+- PostgreSQL / pgAdmin 4 (o MySQL / MariaDB según tu configuración).
+
+<br>
+
+### 2. Clonar el repositorio y las dependencias
+Abre tu terminal en la carpeta donde deseas alojar el proyecto y ejecuta (todo esto se hace mediante la terminal de tu proyecto):
+
+<br>
+<img width="632" height="122" alt="image" src="https://github.com/user-attachments/assets/ba46986a-098f-4419-8953-89ef0d2f3028" />
+<br>
+
+> Nota: Si el proyecto incluye dependencias de Node, ejecuta también `npm install` y `npm run dev`.
+
+<br>
+
+### 3. Configurar el entorno `.env`
+
+**3.1 Se copia el archivo de configuración**
+<br>
+<img width="683" height="92" alt="image" src="https://github.com/user-attachments/assets/a64159fc-3f36-48fa-9ec6-bb08f9aacc84" />
+<br>
+
+**3.2 Genera la llave de cifrado de la aplicación**
+<br>
+<img width="666" height="75" alt="image" src="https://github.com/user-attachments/assets/3a15227b-dfc9-47ec-a1bf-0cc36c977e34" />
+<br>
+
+**3.3 Se abrirá el archivo `.env` en tu editor de código y configura los accesos a tu base de datos pgsql**
+<br>
+<img width="330" height="172" alt="image" src="https://github.com/user-attachments/assets/817419b4-5332-4970-948e-c33c0b859431" />
+<br>
+
+Junto con esto se tiene que crear una base de datos y migrar las tablas correspondientes. 
+Se crea primero la base de datos en pgAdmin4: 
+
+<br>
+<img width="775" height="285" alt="image" src="https://github.com/user-attachments/assets/e7bc79c1-b6f4-4cef-9bc6-9e202ac42273" />
+<br>
+
+Después pasamos a migrar las tablas correspondientes:
+
+<br>
+<img width="637" height="87" alt="image" src="https://github.com/user-attachments/assets/a7aff83a-cb39-478a-ba9c-d275769bbb20" />
+<br>
+
+**Último paso**
+Pasamos a la parte de levantar el servidor local para ejecutar Laravel.
+
+<br>
+<img width="766" height="102" alt="image" src="https://github.com/user-attachments/assets/4e780f6d-45c0-4ed1-a8bc-c05f53694141" />
+<br>
+
+En esta parte nos saldrá una URL local como esta `[http://127.0.0.1:8000]` para abrir el proyecto correspondiente.
+
+### Evidencias de Instalación
+
+<br>
+<img width="1087" height="392" alt="image" src="https://github.com/user-attachments/assets/4ad32456-a0f6-4e65-954c-fb826cb71bb7" />
+<br>
+
+<br>
+<img width="940" height="105" alt="image" src="https://github.com/user-attachments/assets/9b631390-8701-4313-9810-5d2c152e0aa4" />
+<br>
+
+<br>
+<img width="1135" height="453" alt="image" src="https://github.com/user-attachments/assets/793b4845-54c5-4a53-867d-a73bc0cb1729" />
+<br>
