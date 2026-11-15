@@ -10,7 +10,6 @@ class EstacionamientoController extends Controller
     public function index()
     {
         if (!session()->has('estacionamientos')) {
-
             $estacionamientos = [
                 [
                     'id' => 1,
@@ -70,6 +69,46 @@ class EstacionamientoController extends Controller
         return view('mis-espacios', compact('estacionamientos'));
     }
 
+    // GET: Mostrar formulario de creación
+    public function create()
+    {
+        // Apunta correctamente a la vista ubicada en resources/views/components/create.blade.php
+        return view('components.create'); 
+    }
+
+    // POST: Guardar nuevo estacionamiento en la sesión
+    public function store(Request $request)
+    {
+        $datos = $request->validate([
+            'nombre' => 'required|string|max:100',
+            'ubicacion' => 'required|string|max:150',
+            'precio' => 'required|numeric|min:1',
+            'disponibles' => 'required|integer|min:0',
+            'total' => 'required|integer|min:1'
+        ]);
+
+        if ($datos['disponibles'] > $datos['total']) {
+            return back()->withErrors([
+                'disponibles' => 'Los espacios disponibles no pueden superar el total.'
+            ])->withInput();
+        }
+
+        $estacionamientos = session()->get('estacionamientos', []);
+
+        // Generar un ID único autoincrementable basado en los elementos existentes
+        $nuevoId = count($estacionamientos) > 0 ? max(array_column($estacionamientos, 'id')) + 1 : 1;
+
+        $nuevoEstacionamiento = array_merge(['id' => $nuevoId], $datos);
+
+        $estacionamientos[] = $nuevoEstacionamiento;
+
+        session()->put('estacionamientos', $estacionamientos);
+
+        return redirect()
+            ->route('estacionamientos.index')
+            ->with('success', 'Espacio agregado exitosamente.');
+    }
+
     // PUT: Actualizar estacionamiento
     public function update(Request $request, $id)
     {
@@ -88,18 +127,14 @@ class EstacionamientoController extends Controller
         }
 
         $estacionamientos = session()->get('estacionamientos', []);
-
         $encontrado = false;
 
         foreach ($estacionamientos as $indice => $estacionamiento) {
-
             if ($estacionamiento['id'] == $id) {
-
                 $estacionamientos[$indice] = array_merge(
                     $estacionamiento,
                     $datos
                 );
-
                 $encontrado = true;
                 break;
             }
