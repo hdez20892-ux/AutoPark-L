@@ -382,3 +382,161 @@ body {
     }
 
 }
+
+/* =========================
+   AJUSTES PARA BLADE
+========================= */
+
+.reservas-panel[hidden] {
+    display: none !important;
+}
+
+.reserva-actions form {
+    margin: 0;
+}
+
+.reserva-actions .btn-cancel {
+    width: 100%;
+    padding: 0 18px;
+}
+
+
+
+
+.reservas-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 25px 0;
+}
+
+.btn-nueva-reserva {
+    background-color: #6842a6;
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color .2s ease;
+}
+
+.btn-nueva-reserva:hover {
+    background-color: #56358b;
+    color: white;
+}
+
+.formulario-reserva {
+    background-color: #ffffff;
+    border: 1px solid #B8C7D9;
+    border-radius: 18px;
+    padding: 30px;
+    margin: 25px 0;
+}
+
+.formulario-reserva h2 {
+    margin-bottom: 8px;
+}
+
+.formulario-reserva > p {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.campo-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.campo-reserva label {
+    font-weight: 600;
+}
+
+.campo-reserva input,
+.campo-reserva select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #B8C7D9;
+    border-radius: 9px;
+    background-color: #ffffff;
+}
+
+.horarios-reserva {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.precio-reserva {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #dbe3ec;
+    font-size: 17px;
+}
+
+.precio-reserva strong {
+    color: #6842a6;
+    font-size: 21px;
+}
+
+.acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.acciones-formulario a,
+.acciones-formulario button {
+    padding: 12px 20px;
+    border-radius: 9px;
+    text-decoration: none;
+    border: none;
+    font-weight: 600;
+}
+
+.acciones-formulario a {
+    background-color: #475467;
+    color: white;
+}
+
+.acciones-formulario button {
+    background-color: #6842a6;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .horarios-reserva {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .formulario-reserva {
+        padding: 20px;
+    }
+
+    .acciones-formulario {
+        flex-direction: column;
+    }
+}
+
+
+
+.btn-edit {
+    display: inline-block;
+    background-color: #475467;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 9px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color .2s ease;
+}
+
+.btn-edit:hover {
+    background-color: #344054;
+    color: white;
+}

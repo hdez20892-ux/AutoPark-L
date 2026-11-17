@@ -1,478 +1,108 @@
-const reservasContainer =
-    document.getElementById(
-        "reservasContainer"
-    );
 
+document.addEventListener('DOMContentLoaded', function () {
 
-const emptyState =
-    document.getElementById(
-        "emptyState"
-    );
+    
+    const tabButtons = document.querySelectorAll('.tab-button');
 
+    
+    const panelActivas = document.getElementById('panelActivas');
+    const panelHistorial = document.getElementById('panelHistorial');
 
-const tabButtons =
-    document.querySelectorAll(
-        ".tab-button"
-    );
+    
+    tabButtons.forEach(button => {
 
+        button.addEventListener('click', function () {
 
-let tabActual =
-    "activas";
+            const tabSeleccionada = this.dataset.tab;
 
+            // Quitar la clase activa de todas las pestañas
+            tabButtons.forEach(tab => {
 
-/* =========================
-   DATOS DE EJEMPLO
-========================= */
+                tab.classList.remove('active');
 
-/*
-    DATOS TEMPORALES.
+                tab.setAttribute('aria-selected', 'false');
 
-    ELIMINAR / REEMPLAZAR CUANDO
-    SE IMPLEMENTE EL BACKEND REAL.
-*/
+            });
 
-const reservasEjemplo = [
+            
+            this.classList.add('active');
 
-    {
-        id: 1,
+            this.setAttribute('aria-selected', 'true');
 
-        estacionamiento: {
-            id: 1,
-            nombre: "Estacionamiento Centro",
-            ubicacion: "Centro de Pachuca",
-            precio: 20,
-            disponibles: 5
-        },
+            // Mostrar el panel correspondiente
+            if (tabSeleccionada === 'activas') {
 
-        fecha: "2026-10-01",
+                panelActivas.hidden = false;
+                panelHistorial.hidden = true;
 
-        horaEntrada: "18:00",
+            } else {
 
-        horaSalida: "20:00",
-
-        total: 40,
-
-        estado: "activa"
-    },
-
-    {
-        id: 2,
-
-        estacionamiento: {
-            id: 2,
-            nombre: "Plaza Juárez",
-            ubicacion: "Zona Centro",
-            precio: 22,
-            disponibles: 4
-        },
-
-        fecha: "2026-10-04",
-
-        horaEntrada: "10:00",
-
-        horaSalida: "12:00",
-
-        total: 44,
-
-        estado: "activa"
-    }
-
-];
-
-
-/* =========================
-   CARGAR DATOS
-========================= */
-
-function cargarReservas() {
-
-    const guardadas =
-        localStorage.getItem(
-            "autoparkReservas"
-        );
-
-
-    if (!guardadas) {
-
-        localStorage.setItem(
-            "autoparkReservas",
-            JSON.stringify(
-                reservasEjemplo
-            )
-        );
-
-
-        return [
-            ...reservasEjemplo
-        ];
-
-    }
-
-
-    return JSON.parse(
-        guardadas
-    );
-
-}
-
-
-let reservas =
-    cargarReservas();
-
-
-/* =========================
-   GUARDAR
-========================= */
-
-function guardarReservas() {
-
-    /*
-        REEMPLAZAR POR API / BACKEND
-        CUANDO SE IMPLEMENTE.
-    */
-
-    localStorage.setItem(
-        "autoparkReservas",
-        JSON.stringify(reservas)
-    );
-
-}
-
-
-/* =========================
-   FORMATEAR FECHA
-========================= */
-
-function formatearFecha(fecha) {
-
-    const fechaObjeto =
-        new Date(
-            `${fecha}T00:00:00`
-        );
-
-
-    return fechaObjeto
-        .toLocaleDateString(
-            "es-MX",
-            {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            }
-        )
-        .replace(".", "");
-
-}
-
-
-/* =========================
-   RENDER
-========================= */
-
-function mostrarReservas() {
-
-    reservasContainer.innerHTML =
-        "";
-
-
-    const filtradas =
-        reservas.filter(
-            reserva => {
-
-                if (
-                    tabActual ===
-                    "activas"
-                ) {
-
-                    return (
-                        reserva.estado ===
-                        "activa"
-                    );
-
-                }
-
-
-                return (
-                    reserva.estado !==
-                    "activa"
-                );
+                panelActivas.hidden = true;
+                panelHistorial.hidden = false;
 
             }
-        );
 
+        });
+
+    });
+
+  
+
+const estacionamientoSelect =
+    document.getElementById('estacionamiento_id');
+
+const horaEntrada =
+    document.getElementById('horaEntrada');
+
+const horaSalida =
+    document.getElementById('horaSalida');
+
+const precioEstimado =
+    document.getElementById('precioEstimado');
+
+function calcularPrecio() {
 
     if (
-        filtradas.length === 0
+        !estacionamientoSelect ||
+        !horaEntrada ||
+        !horaSalida ||
+        !precioEstimado
     ) {
-
-        emptyState.classList.remove(
-            "hidden"
-        );
-
         return;
-
     }
 
+    const opcion = estacionamientoSelect.selectedOptions[0];
 
-    emptyState.classList.add(
-        "hidden"
-    );
+    const precio = Number(opcion?.dataset.precio || 0);
 
+    if (!horaEntrada.value || !horaSalida.value) {
+        precioEstimado.textContent = '$0.00 MXN';
+        return;
+    }
 
-    filtradas.forEach(
-        reserva => {
+    const entrada = horaEntrada.value.split(':').map(Number);
+    const salida = horaSalida.value.split(':').map(Number);
 
-            const card =
-                document.createElement(
-                    "article"
-                );
+    const minutosEntrada = entrada[0] * 60 + entrada[1];
+    const minutosSalida = salida[0] * 60 + salida[1];
 
+    const duracion = (minutosSalida - minutosEntrada) / 60;
 
-            card.className =
-                "reserva-card card";
+    if (duracion <= 0) {
+        precioEstimado.textContent = 'Horario no válido';
+        return;
+    }
 
+    const total = precio * duracion;
 
-            const estadoTexto =
-                reserva.estado ===
-                "activa"
-                    ? "Confirmada"
-                    : reserva.estado ===
-                      "cancelada"
-                        ? "Cancelada"
-                        : "Finalizada";
-
-
-            card.innerHTML = `
-
-                <div class="reserva-image">
-                    P
-                </div>
-
-
-                <div class="reserva-info">
-
-                    <h2>
-                        ${reserva.estacionamiento.nombre}
-                    </h2>
-
-                    <p>
-                        ${formatearFecha(reserva.fecha)}
-                        ·
-                        ${reserva.horaEntrada}
-                        –
-                        ${reserva.horaSalida}
-                    </p>
-
-                    <p>
-                        ${reserva.estacionamiento.ubicacion}
-                    </p>
-
-                    <p>
-                        Total:
-                        $${reserva.total} MXN
-                    </p>
-
-                </div>
-
-
-                <div class="reserva-actions">
-
-                    <span
-                        class="status-badge badge rounded-pill ${reserva.estado}"
-                    >
-                        ${estadoTexto}
-                    </span>
-
-
-                    <button
-                        type="button"
-                        class="btn btn-detail"
-                        data-action="detalle"
-                        data-id="${reserva.id}"
-                    >
-                        Ver detalle
-                    </button>
-
-
-                    ${
-                        reserva.estado ===
-                        "activa"
-                            ? `
-                                <button
-                                    type="button"
-                                    class="btn btn-cancel"
-                                    data-action="cancelar"
-                                    data-id="${reserva.id}"
-                                >
-                                    Cancelar
-                                </button>
-                              `
-                            : ""
-                    }
-
-                </div>
-            `;
-
-
-            reservasContainer
-                .appendChild(
-                    card
-                );
-
-        }
-    );
-
+    precioEstimado.textContent =
+        '$' + total.toFixed(2) + ' MXN';
 }
 
+estacionamientoSelect?.addEventListener('change', calcularPrecio);
+horaEntrada?.addEventListener('change', calcularPrecio);
+horaSalida?.addEventListener('change', calcularPrecio);
 
-/* =========================
-   PESTAÑAS
-========================= */
+calcularPrecio();
 
-tabButtons.forEach(
-    button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                tabActual =
-                    button.dataset.tab;
-
-
-                tabButtons.forEach(
-                    item => {
-
-                        item.classList.remove(
-                            "active"
-                        );
-
-                        item.setAttribute(
-                            "aria-selected",
-                            "false"
-                        );
-
-                    }
-                );
-
-
-                button.classList.add(
-                    "active"
-                );
-
-                button.setAttribute(
-                    "aria-selected",
-                    "true"
-                );
-
-
-                mostrarReservas();
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================
-   ACCIONES
-========================= */
-
-reservasContainer.addEventListener(
-    "click",
-    event => {
-
-        const button =
-            event.target.closest(
-                "button"
-            );
-
-
-        if (!button) {
-
-            return;
-
-        }
-
-
-        const id =
-            Number(
-                button.dataset.id
-            );
-
-
-        const reserva =
-            reservas.find(
-                item =>
-                    item.id === id
-            );
-
-
-        if (!reserva) {
-
-            return;
-
-        }
-
-
-        /* VER DETALLE */
-
-        if (
-            button.dataset.action ===
-            "detalle"
-        ) {
-
-            sessionStorage.setItem(
-                "estacionamientoSeleccionado",
-                JSON.stringify(
-                    reserva.estacionamiento
-                )
-            );
-
-
-            window.location.href =
-                "detalle.html";
-
-        }
-
-
-        /* CANCELAR */
-
-        if (
-            button.dataset.action ===
-            "cancelar"
-        ) {
-
-            const confirmar =
-                confirm(
-                    "¿Deseas cancelar esta reserva?"
-                );
-
-
-            if (!confirmar) {
-
-                return;
-
-            }
-
-
-            reserva.estado =
-                "cancelada";
-
-
-            guardarReservas();
-
-            mostrarReservas();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   INICIO
-========================= */
-
-mostrarReservas();
+});

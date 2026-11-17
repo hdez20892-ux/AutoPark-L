@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\EstacionamientoController;
+use App\Http\Controllers\ReservaController;
 
 // Página principal
 Route::get('/', function () {
@@ -66,6 +67,30 @@ Route::get('/perfil', function () {
     return view('perfil'); 
 })->name('perfil');
 
-Route::get('/reservas', function () {
-    return view('reservas'); 
-})->name('reservas');
+
+
+// --- CRUD DE RESERVAS ---
+
+// Mostrar reservas
+Route::get('/reservas', [ReservaController::class, 'index'])
+    ->name('reservas.index');
+
+// Mostrar formulario de creación
+Route::get('/reservas/create', [ReservaController::class, 'create'])
+    ->name('reservas.create');
+
+// Guardar reserva
+Route::post('/reservas', [ReservaController::class, 'store'])
+    ->name('reservas.store');
+
+// Mostrar formulario de edición
+Route::get('/reservas/{id}/edit', [ReservaController::class, 'edit'])
+    ->name('reservas.edit');
+
+// Actualizar reserva
+Route::put('/reservas/{id}', [ReservaController::class, 'update'])
+    ->name('reservas.update');
+
+// Cancelar reserva
+Route::patch('/reservas/{id}/cancelar', [ReservaController::class, 'cancel'])
+    ->name('reservas.cancel');
