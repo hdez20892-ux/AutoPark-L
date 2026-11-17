@@ -69,3 +69,8 @@ Route::get('/perfil', function () {
 Route::get('/reservas', function () {
     return view('reservas'); 
 })->name('reservas');
+
+
+Route::get('/detalle-estacionamiento', function () {
+    return view('detalleEstacionamiento');
+})->name('estacionamientos.detalle');

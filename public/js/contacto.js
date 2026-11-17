@@ -1,47 +1,38 @@
-const contactForm =
-    document.getElementById("contactForm");
 
-const contactToast =
-    document.getElementById("contactToast");
+"use strict";
 
-contactForm.addEventListener(
-    "submit",
-    event => {
+const contactForm = document.getElementById("contactForm");
+const contactToast = document.getElementById("contactToast");
 
-        event.preventDefault();
-        event.stopPropagation();
+contactForm.addEventListener("submit", event => {
 
-        if (!contactForm.checkValidity()) {
-            contactForm.classList.add(
-                "was-validated"
-            );
-            return;
-        }
+    event.preventDefault();
+    event.stopPropagation();
 
-        /*
-        ==========================================
-        IMPORTANTE - BACKEND
-        ==========================================
-        El envío es temporal. Cuando exista backend,
-        los datos deberán enviarse mediante una API.
-        ==========================================
-        */
-
-        contactForm.classList.add(
-            "was-validated"
-        );
-
-        const toast =
-            bootstrap.Toast.getOrCreateInstance(
-                contactToast
-            );
-
-        toast.show();
-
-        contactForm.reset();
-        contactForm.classList.remove(
-            "was-validated"
-        );
-
+    if (!contactForm.checkValidity()) {
+        contactForm.classList.add("was-validated");
+        return;
     }
-);
+
+    /*
+    ==========================================
+    IMPORTANTE - BACKEND
+    ==========================================
+    El envío es temporal. Cuando exista backend,
+    los datos deberán enviarse mediante una API.
+    ==========================================
+    */
+
+    contactForm.classList.add("was-validated");
+
+    const toast = bootstrap.Toast.getOrCreateInstance(
+        contactToast
+    );
+
+    toast.show();
+
+    contactForm.reset();
+
+    contactForm.classList.remove("was-validated");
+
+});

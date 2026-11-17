@@ -162,7 +162,7 @@ function crearTarjetaEstacionamiento(estacionamiento) {
   tarjeta.innerHTML = `
     <div class="parking-top">
       <div class="parking-icon">
-       <img src="./assets/images/logo-autopark.png" alt="Logo AutoPark">
+   <img src="/assets/images/logo-autopark.png" alt="Logo AutoPark">
       </div>
 
       <div class="parking-info">
@@ -307,7 +307,14 @@ function manejarClickResultados(evento) {
   }
 
   if (boton.dataset.action === "detalle") {
-    abrirDetalleEstacionamiento(estacionamiento);
+    // Guardar el estacionamiento elegido para mostrarlo en la página de detalle.
+    sessionStorage.setItem(
+      "estacionamientoSeleccionado",
+      JSON.stringify(estacionamiento)
+    );
+
+    // Abrir la vista de detalle de Laravel.
+    window.location.href = "/detalle-estacionamiento";
   }
 }
 

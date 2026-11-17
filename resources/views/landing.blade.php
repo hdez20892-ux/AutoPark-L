@@ -18,7 +18,6 @@
 
     <main>
 
-        <!-- HERO -->
         <section class="hero">
 
             <div class="hero-content">
@@ -92,9 +91,9 @@
                                                 6 espacios libres
                                             </span>
 
-                                            <button type="button" class="btn btn-detail" id="btnDetalle">
+                                            <a href="{{ url('/detalle-estacionamiento') }}" class="btn btn-detail">
                                                 Ver detalle
-                                            </button>
+                                            </a>
 
                                         </div>
 
@@ -114,8 +113,6 @@
 
         </section>
 
-
-        <!-- BENEFICIOS -->
         <section class="features-section">
 
             <h2>Todo lo que necesitas</h2>
@@ -129,10 +126,8 @@
                         <div class="feature-header">
 
                             <span class="feature-number">
-
                                 <img src="{{ asset('assets/icons/search.svg') }}" alt="" class="feature-icon"
                                     aria-hidden="true">
-
                             </span>
 
                             <h3>Busca rápido</h3>
@@ -147,7 +142,6 @@
 
                 </div>
 
-
                 <div class="col-md-4">
 
                     <article class="feature-card card h-100">
@@ -155,10 +149,8 @@
                         <div class="feature-header">
 
                             <span class="feature-number">
-
                                 <img src="{{ asset('assets/icons/calendar-check.svg') }}" alt=""
                                     class="feature-icon" aria-hidden="true">
-
                             </span>
 
                             <h3>Reserva con claridad</h3>
@@ -174,7 +166,6 @@
 
                 </div>
 
-
                 <div class="col-md-4">
 
                     <article class="feature-card card h-100">
@@ -182,10 +173,8 @@
                         <div class="feature-header">
 
                             <span class="feature-number">
-
                                 <img src="{{ asset('assets/icons/gear.svg') }}" alt="" class="feature-icon"
                                     aria-hidden="true">
-
                             </span>
 
                             <h3>Administra tus espacios</h3>
@@ -204,7 +193,6 @@
             </div>
 
         </section>
-
 
         <footer class="landing-footer">
             AutoPark · estacionamiento simple, claro y accesible

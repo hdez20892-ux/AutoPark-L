@@ -1,61 +1,928 @@
-:root{--azul-fondo:#475467;--azul-oscuro:#101828;--azul-principal:#0000ff;--azul-claro:#aecff7;--gris-fondo:#eef2f7;--blanco:#fff;--gris-texto:#475467;--gris-secundario:#667085;--gris-borde:#d0d5dd;--turquesa:#55c6d8;--naranja:#ff6600;--space-4:4px;--space-8:8px;--space-16:16px;--space-24:24px;--space-32:32px;--space-48:48px;--radius-small:8px;--radius-medium:12px;--radius-large:16px;--shadow-card:0 2px 6px rgba(16,24,40,.08);--shadow-hover:0 6px 18px rgba(16,24,40,.14)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background-color:var(--gris-fondo);color:var(--azul-oscuro);font-family:"Raleway",sans-serif;min-height:100vh}
-.autopark-navbar{min-height:64px;background-color:var(--azul-claro);border-bottom:1px solid rgba(16,24,40,.08);padding-top:8px;padding-bottom:8px}
-.navbar-brand{text-decoration:none;color:var(--azul-oscuro)!important;font-weight:700}
-.logo-box{width:40px;height:40px;display:flex;justify-content:center;align-items:center;overflow:hidden;background:transparent;border-radius:8px}
-.logo-box img{width:100%;height:100%;object-fit:contain;display:block}
-.brand-name{font-size:17px;letter-spacing:-.2px}
-.navbar-nav{padding-top:4px;padding-bottom:4px}
-.nav-link{color:var(--azul-oscuro)!important;font-family:"Roboto Mono",monospace;font-size:12px;padding:8px 14px!important;border-radius:20px;transition:all .2s ease}
-.nav-link:hover{background-color:rgba(255,255,255,.55)}
-.nav-link.active{background-color:var(--blanco);box-shadow:0 1px 4px rgba(16,24,40,.08)}
-.main-container{padding-top:32px;padding-bottom:48px}
-.page-header{margin-bottom:16px}
-.page-header h1{margin:0 0 6px;font-size:clamp(28px,4vw,36px);font-weight:700;letter-spacing:-.8px}
-.page-header p{margin:0;color:var(--gris-secundario);font-family:"Roboto Mono",monospace;font-size:11px;line-height:1.6}
-.parking-preview{background-color:var(--azul-claro);border-radius:16px;padding:26px 24px;margin-bottom:32px;min-height:191px;display:flex;align-items:center}
-.parking-preview-card{width:100%;min-height:138px;background-color:var(--blanco);border-radius:10px;display:flex;align-items:center;padding:20px 40px;gap:22px}
-.parking-image{width:112px;height:80px;flex-shrink:0;background-color:var(--azul-fondo);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.parking-image img{width:90%;height:90%;object-fit:contain}
-.parking-preview-info{flex:1}
-.parking-preview-info h2{margin:0 0 12px;font-size:12px;font-weight:600}
-.parking-preview-info p{margin:0;color:var(--gris-secundario);font-family:"Roboto Mono",monospace;font-size:9px}
-.details-section{display:flex;align-items:flex-start;gap:24px}
-.details-content{flex:1}
-.details-content h2{margin:0 0 16px;color:var(--gris-texto);font-size:18px;font-weight:500}
-.details-text p{margin:0 0 4px;color:var(--gris-texto);font-family:"Roboto Mono",monospace;font-size:9px;line-height:1.4}
-.details-text span{font-weight:500}
-.services-card{width:123px;min-height:83px;background-color:var(--blanco);border:1px solid var(--gris-borde);border-radius:10px;padding:12px;box-shadow:var(--shadow-card)}
-.services-card h3{margin:0 0 8px;font-size:10px;font-weight:600}
-.services-card p{margin:0;color:var(--gris-texto);font-family:"Roboto Mono",monospace;font-size:8px;line-height:1.4}
-.reservation-card{background-color:var(--blanco);border:1px solid var(--gris-borde);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow-card)}
-.reservation-title{margin-bottom:18px}
-.reservation-title p{margin:0 0 3px;font-size:11px;font-weight:600}
-.reservation-title h2{margin:0;font-size:17px;font-weight:600}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;margin-bottom:6px;color:var(--gris-secundario);font-family:"Roboto Mono",monospace;font-size:8px}
-.form-control{min-height:30px;border:1px solid var(--gris-borde);border-radius:7px;color:var(--azul-oscuro);font-family:"Roboto Mono",monospace;font-size:9px;padding:7px 9px;box-shadow:none!important}
-.form-control:focus{border-color:var(--azul-fondo);box-shadow:0 0 0 2px rgba(71,84,103,.1)!important}
-.total-card{border:1px solid var(--gris-borde);border-radius:10px;padding:12px;margin-top:6px;margin-bottom:16px;display:flex;flex-direction:column;gap:4px}
-.total-card span{color:var(--gris-secundario);font-family:"Roboto Mono",monospace;font-size:8px}
-.total-card strong{font-family:"Roboto Mono",monospace;font-size:12px}
-.reserve-button{width:100%;min-height:30px;border-radius:16px;background-color:var(--azul-fondo);border-color:var(--azul-fondo);font-family:"Roboto Mono",monospace;font-size:9px}
-.reserve-button:hover{background-color:#344054;border-color:#344054}
-.reservation-modal{border:none;border-radius:16px;overflow:hidden}
-.reservation-modal .modal-header{background-color:var(--azul-claro);border-bottom:1px solid var(--gris-borde);padding:20px 24px}
-.reservation-modal .modal-title{font-size:16px;font-weight:700}
-.reservation-modal .modal-body{text-align:center;padding:24px}
-.confirmation-icon{width:54px;height:54px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:50%;background-color:#d8f3f5;color:#087f8c;font-size:25px;font-weight:700}
-.reservation-modal h3{font-size:18px;margin-bottom:8px}
-.reservation-modal .modal-body>p{color:var(--gris-secundario);font-family:"Roboto Mono",monospace;font-size:10px;line-height:1.5}
-.confirmation-data{margin-top:20px;text-align:left;border:1px solid var(--gris-borde);border-radius:10px;padding:12px}
-.confirmation-data p{display:flex;justify-content:space-between;margin:0;padding:7px 0;border-bottom:1px solid #eaecf0;font-family:"Roboto Mono",monospace;font-size:9px}
-.confirmation-data p:last-child{border-bottom:none}
-.confirmation-data strong{color:var(--gris-secundario)}
-.confirmation-data span{font-weight:600}
-.reservation-modal .modal-footer{padding:12px 24px;border-top:1px solid var(--gris-borde)}
-@media(max-width:991.98px){.main-container{padding-top:24px}.navbar-nav{margin-top:16px;padding-bottom:8px}.nav-link{border-radius:8px}.reservation-card{margin-top:0}}
-@media(max-width:767.98px){.main-container{padding-left:12px;padding-right:12px;padding-top:24px}.page-header{margin-bottom:20px}.page-header h1{font-size:28px}.page-header p{font-size:9px}.parking-preview{padding:20px 16px;margin-bottom:24px}.parking-preview-card{padding:16px;gap:14px;min-height:120px}.parking-image{width:90px;height:70px}.parking-preview-info h2{font-size:11px}.parking-preview-info p{font-size:8px}.details-section{flex-direction:column;gap:16px}.services-card{width:100%;min-height:auto}.services-card p{font-size:9px}.reservation-card{padding:18px 16px}}
-@media(max-width:400px){.parking-preview-card{flex-direction:column;align-items:flex-start}.parking-image{width:100%;height:80px}.parking-preview-info{width:100%}.reservation-title h2{font-size:16px}}
+:root {
+    --azul: #557ef7;
+    --azul-oscuro: #1f1e50;
+    --fondo: #e5eaf5;
+    --rosa: #ff6f82;
+    --blanco: #ffffff;
+    --texto: #344054;
+    --gris: #667085;
+    --borde: #e4e7ec;
+    --tarjeta: #ffffff;
+    --sombra: 0 10px 30px rgba(31, 30, 80, .07);
+}
+
+/* CONFIGURACIÓN GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+}
+
+main.container {
+    max-width: 1200px;
+}
+
+/* NAVBAR */
+.navbar-autopark {
+    background: var(--fondo);
+    border-bottom: 1px solid var(--borde);
+    padding: 12px 0;
+}
+
+.navbar-autopark .navbar-brand,
+.navbar-autopark .nav-link {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+.navbar-autopark .nav-link:hover,
+.navbar-autopark .nav-link.active {
+    color: var(--azul);
+}
+
+.navbar-autopark .navbar-toggler {
+    border-color: var(--azul);
+}
+
+.navbar-autopark .navbar-toggler-icon {
+    filter: invert(20%) sepia(30%) saturate(1500%) hue-rotate(205deg);
+}
+
+.navbar-autopark .logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* ENCABEZADOS */
+h1, h2, h3, p {
+    overflow-wrap: break-word;
+}
+
+h1 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+h2 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+h3 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--gris);
+    font-size: 1rem;
+}
+
+.eyebrow {
+    color: var(--azul);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.back-link {
+    color: var(--azul);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--azul-oscuro);
+}
+
+/* TARJETA PRINCIPAL */
+.parking-hero {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    box-shadow: var(--sombra);
+}
+
+.parking-illustration {
+    min-height: 230px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #dce6ff, #b9cbff);
+}
+
+.parking-sign {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    display: grid;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    background: var(--azul);
+    color: var(--blanco);
+    border: 5px solid var(--blanco);
+    border-radius: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    box-shadow: var(--sombra);
+}
+
+.parking-car {
+    font-size: clamp(4rem, 10vw, 7rem);
+    z-index: 2;
+}
+
+.parking-lines {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 45px,
+        rgba(255,255,255,.8) 45px,
+        rgba(255,255,255,.8) 52px
+    );
+    border-top: 4px solid rgba(255,255,255,.8);
+}
+
+.parking-content {
+    padding: 25px;
+}
+
+.parking-content h2 {
+    margin-bottom: 10px;
+}
+
+.muted {
+    color: var(--gris);
+    line-height: 1.7;
+}
+
+/* ESTADOS */
+.status-badge,
+.zone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.status-badge {
+    color: #18794e;
+    background: #dcfce7;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+}
+
+.zone-badge {
+    color: var(--azul-oscuro);
+    background: #e9edff;
+}
+
+/* BOTONES */
+.parking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.btn-primary {
+    background: var(--azul);
+    border-color: var(--azul);
+}
+
+.btn-primary:hover {
+    background: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+}
+
+.btn-outline-primary {
+    color: var(--azul);
+    border-color: var(--azul);
+}
+
+.btn-outline-primary:hover {
+    color: var(--blanco);
+    background: var(--azul);
+    border-color: var(--azul);
+}
+
+/* INFORMACIÓN RÁPIDA */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    min-width: 0;
+    padding: 22px 16px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 17px;
+    box-shadow: var(--sombra);
+}
+
+.info-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+}
+
+.info-card p {
+    margin-bottom: 8px;
+    color: var(--gris);
+    font-size: .85rem;
+}
+
+.info-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+}
+
+/* TARJETAS DE INFORMACIÓN */
+.content-card,
+.help-card,
+.booking-card {
+    padding: 25px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 19px;
+    box-shadow: var(--sombra);
+}
+
+.content-card > p {
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row span {
+    color: var(--gris);
+    flex: 0 0 40%;
+}
+
+.detail-row strong {
+    color: var(--azul-oscuro);
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* SERVICIOS */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.service-button {
+    padding: 14px;
+    background: #f5f7ff;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    text-align: left;
+    transition: .2s ease;
+}
+
+.service-button:hover,
+.service-button.active {
+    background: #e7edff;
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.service-description {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    color: var(--gris);
+    line-height: 1.6;
+}
+
+/* RESERVACIÓN */
+.booking-card {
+    position: sticky;
+    top: 20px;
+}
+
+.price-display {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    margin: 20px 0;
+}
+
+.price-display span {
+    color: var(--azul);
+    font-size: 2.2rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.price-display small {
+    color: var(--gris);
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: .9rem;
+}
+
+.summary-line span {
+    color: var(--gris);
+}
+
+.summary-line strong {
+    color: var(--azul-oscuro);
+    text-align: right;
+}
+
+.small-note {
+    color: var(--gris);
+    font-size: .76rem;
+    line-height: 1.6;
+}
+
+.help-card h3 {
+    font-size: 1.1rem;
+}
+
+/* MODAL */
+.modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-header,
+.modal-footer {
+    padding: 18px 22px;
+    border-color: var(--borde);
+}
+
+.modal-body {
+    padding: 22px;
+}
+
+.form-control {
+    min-height: 45px;
+    border-color: var(--borde);
+    border-radius: 9px;
+}
+
+.form-control:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 .2rem rgba(85,126,247,.15);
+}
+
+.cost-box {
+    padding: 18px;
+    background: #f3f5fc;
+    border-radius: 12px;
+}
+
+.total-price {
+    color: var(--azul);
+    font-size: 1.35rem;
+}
+
+.form-message {
+    color: var(--gris);
+    font-size: .9rem;
+}
+
+/* NOTIFICACIONES */
+.toast {
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+@media (max-width: 991.98px) {
+
+    main.container {
+        padding-top: 25px !important;
+        padding-bottom: 35px !important;
+    }
+
+    .booking-card {
+        position: static;
+    }
+
+    .parking-illustration {
+        min-height: 200px;
+    }
+
+    .info-grid {
+        gap: 12px;
+    }
+
+    .info-card {
+        padding: 18px 12px;
+    }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+@media (max-width: 767.98px) {
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    main.container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .parking-illustration {
+        min-height: 175px;
+    }
+
+    .parking-content {
+        padding: 20px;
+    }
+
+    .parking-actions {
+        flex-direction: column;
+    }
+
+    .parking-actions .btn {
+        width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px;
+    }
+
+    .info-icon {
+        margin: 0;
+    }
+
+    .info-card p {
+        margin: 0;
+    }
+
+    .info-card h3 {
+        margin-left: auto;
+        font-size: 1rem;
+        text-align: right;
+    }
+
+    .content-card,
+    .booking-card,
+    .help-card {
+        padding: 19px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .detail-row span,
+    .detail-row strong {
+        flex: auto;
+        width: 100%;
+        text-align: left;
+    }
+
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .service-button {
+        width: 100%;
+    }
+
+    .price-display span {
+        font-size: 1.9rem;
+    }
+
+    .summary-line {
+        font-size: .85rem;
+    }
+
+    .modal-dialog {
+        margin: 12px;
+    }
+
+    .modal-body {
+        padding: 17px;
+    }
+}
+
+/* =========================================
+   CELULARES PEQUEÑOS
+========================================= */
+@media (max-width: 380px) {
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .parking-content {
+        padding: 16px;
+    }
+
+    .content-card,
+    .booking-card,
+    .help-card {
+        padding: 15px;
+    }
+
+    .status-badge,
+    .zone-badge {
+        font-size: .72rem;
+    }
+
+    .price-display span {
+        font-size: 1.65rem;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 14px;
+    }
+}
+
+
+
+/* =========================================
+   AUTOPARK - IDENTIDAD VISUAL COMPARTIDA
+   Ajustes para coincidir con busqueda.css
+========================================= */
+
+:root {
+    --azul: #475467;
+    --azul-oscuro: #101828;
+    --fondo: #e3e8f8;
+    --rosa: #83d5e2;
+    --blanco: #ffffff;
+    --texto: #344054;
+    --gris: #475467;
+    --borde: #b8c9e5;
+    --tarjeta: #ffffff;
+    --sombra: 0 2px 6px rgba(16, 24, 40, .06);
+
+    --azul-fondo: #e3e8f8;
+    --azul-principal: #475467;
+    --azul-claro: #c5e2ff;
+    --azul-borde: #b8c9e5;
+    --gris-fondo: #e3e8f8;
+    --gris-texto: #344054;
+    --gris-secundario: #475467;
+    --gris-borde: #b8c9e5;
+    --turquesa: #83d5e2;
+}
+
+/* Tipografía y fondo compartidos */
+body {
+    background: var(--gris-fondo);
+    color: var(--azul-oscuro);
+    font-family: "Raleway", sans-serif;
+}
+
+h1, h2, h3,
+.navbar-autopark .nav-link,
+.navbar-autopark .navbar-brand {
+    color: var(--azul-oscuro);
+}
+
+.muted,
+.subtitle,
+.detail-row span,
+.summary-line span,
+.small-note {
+    color: var(--gris-secundario);
+}
+
+/* Navbar: mismo azul claro que la página de búsqueda */
+.navbar-autopark {
+    min-height: 76px;
+    background: var(--azul-claro);
+    border-bottom: 1px solid rgba(16, 24, 40, .08);
+    padding: 12px 0;
+}
+
+.navbar-autopark .navbar-brand {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-autopark .nav-link {
+    padding: 10px 14px;
+    border-radius: 20px;
+    color: var(--azul-oscuro);
+    font: 14px "Roboto Mono", monospace;
+}
+
+.navbar-autopark .nav-link:hover {
+    color: var(--azul-oscuro);
+    background: rgba(255, 255, 255, .55);
+}
+
+.navbar-autopark .nav-link.active {
+    color: var(--azul-oscuro);
+    background: var(--blanco);
+}
+
+.navbar-autopark .navbar-toggler {
+    border-color: var(--azul-borde);
+}
+
+.navbar-autopark .logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* Encabezados y textos */
+h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -.6px;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+.eyebrow,
+.back-link {
+    color: var(--azul-principal);
+}
+
+.subtitle,
+.muted {
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Tarjetas con el mismo borde, radio y sombra de búsqueda */
+.parking-hero,
+.info-card,
+.content-card,
+.help-card,
+.booking-card {
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card, 0 2px 6px rgba(16, 24, 40, .06));
+}
+
+.parking-illustration {
+    background: linear-gradient(135deg, var(--azul-claro), #e3e8f8);
+}
+
+.parking-sign {
+    background: var(--azul-principal);
+}
+
+.parking-content {
+    color: var(--azul-oscuro);
+}
+
+.status-badge {
+    color: #173d49;
+    background: var(--turquesa);
+}
+
+.zone-badge {
+    color: var(--azul-oscuro);
+    background: var(--azul-claro);
+}
+
+/* Botones con la misma forma y tipografía de búsqueda */
+.btn {
+    min-height: 42px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    font: 12px "Roboto Mono", monospace;
+    transition: background .2s, color .2s, transform .2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    color: #fff;
+    background: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background: #344054;
+    border-color: #344054;
+}
+
+.btn-outline-primary {
+    color: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-outline-secondary {
+    color: var(--gris-secundario);
+    border-color: var(--gris-borde);
+}
+
+/* Información, servicios y resumen */
+.info-card {
+    box-shadow: 0 2px 6px rgba(16, 24, 40, .06);
+}
+
+.info-card p,
+.detail-row span,
+.summary-line span {
+    font: 11px "Roboto Mono", monospace;
+    color: var(--gris-secundario);
+}
+
+.info-card h3,
+.detail-row strong,
+.summary-line strong {
+    color: var(--azul-oscuro);
+}
+
+.detail-row {
+    border-bottom-color: #eaecf0;
+}
+
+.service-button {
+    background: #f7f9fc;
+    border-color: var(--gris-borde);
+    color: var(--azul-oscuro);
+    font: 12px "Roboto Mono", monospace;
+}
+
+.service-button:hover,
+.service-button.active {
+    background: var(--azul-claro);
+    border-color: var(--azul-principal);
+    color: var(--azul-oscuro);
+}
+
+.service-description,
+.cost-box {
+    background: var(--gris-fondo);
+    color: var(--gris-secundario);
+}
+
+.price-display span,
+.total-price {
+    color: var(--azul-principal);
+}
+
+.summary-line {
+    border-bottom-color: #eaecf0;
+}
+
+/* Modal y notificaciones */
+.modal-content {
+    border: 1px solid var(--gris-borde);
+    border-radius: 18px;
+}
+
+.modal-header {
+    background: var(--azul-claro);
+    border-bottom: 1px solid var(--gris-borde);
+}
+
+.modal-title {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--gris-borde);
+}
+
+.form-control {
+    font: 13px "Roboto Mono", monospace;
+    border-color: var(--gris-borde);
+}
+
+.form-control:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(71, 84, 103, .14);
+}
+
+.toast {
+    background: var(--azul-principal);
+    color: #fff;
+    border-radius: 12px;
+}
+
+/* Ajustes responsivos del menú */
+@media (max-width: 991.98px) {
+    .navbar-autopark .navbar-nav {
+        margin-top: 16px;
+    }
+
+    .navbar-autopark .nav-link {
+        border-radius: 8px;
+    }
+}
+
+/* Evitar desbordamientos en móviles */
+@media (max-width: 767.98px) {
+    .navbar-autopark .navbar-nav {
+        align-items: stretch !important;
+    }
+
+    .navbar-autopark .nav-link {
+        width: 100%;
+    }
+
+    .parking-content,
+    .content-card,
+    .booking-card,
+    .help-card {
+        min-width: 0;
+    }
+
+    .parking-actions .btn {
+        width: 100%;
+    }
+}

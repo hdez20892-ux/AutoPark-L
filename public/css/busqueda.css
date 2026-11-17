@@ -1,713 +1,948 @@
 :root {
-    --azul-fondo: #e3e8f8;
+    --azul: #557ef7;
+    --azul-oscuro: #1f1e50;
+    --fondo: #e5eaf5;
+    --rosa: #ff6f82;
+    --blanco: #ffffff;
+    --texto: #344054;
+    --gris: #667085;
+    --borde: #e4e7ec;
+    --tarjeta: #ffffff;
+    --sombra: 0 10px 30px rgba(31, 30, 80, .07);
+}
+
+/* CONFIGURACIÓN GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+}
+
+main.container {
+    max-width: 1200px;
+}
+
+/* NAVBAR */
+.navbar-autopark {
+    background: var(--fondo);
+    border-bottom: 1px solid var(--borde);
+    padding: 12px 0;
+}
+
+.navbar-autopark .navbar-brand,
+.navbar-autopark .nav-link {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+.navbar-autopark .nav-link:hover,
+.navbar-autopark .nav-link.active {
+    color: var(--azul);
+}
+
+.navbar-autopark .navbar-toggler {
+    border-color: var(--azul);
+}
+
+.navbar-autopark .navbar-toggler-icon {
+    filter: invert(20%) sepia(30%) saturate(1500%) hue-rotate(205deg);
+}
+
+.navbar-autopark .logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* ENCABEZADOS */
+h1, h2, h3, p {
+    overflow-wrap: break-word;
+}
+
+h1 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+h2 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+h3 {
+    color: var(--azul-oscuro);
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--gris);
+    font-size: 1rem;
+}
+
+.eyebrow {
+    color: var(--azul);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.back-link {
+    color: var(--azul);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--azul-oscuro);
+}
+
+/* TARJETA PRINCIPAL */
+.parking-hero {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    box-shadow: var(--sombra);
+}
+
+.parking-illustration {
+    min-height: 230px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #dce6ff, #b9cbff);
+}
+
+.parking-sign {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    display: grid;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    background: var(--azul);
+    color: var(--blanco);
+    border: 5px solid var(--blanco);
+    border-radius: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    box-shadow: var(--sombra);
+}
+
+.parking-car {
+    font-size: clamp(4rem, 10vw, 7rem);
+    z-index: 2;
+}
+
+.parking-lines {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 45px,
+        rgba(255,255,255,.8) 45px,
+        rgba(255,255,255,.8) 52px
+    );
+    border-top: 4px solid rgba(255,255,255,.8);
+}
+
+.parking-content {
+    padding: 25px;
+}
+
+.parking-content h2 {
+    margin-bottom: 10px;
+}
+
+.muted {
+    color: var(--gris);
+    line-height: 1.7;
+}
+
+/* ESTADOS */
+.status-badge,
+.zone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.status-badge {
+    color: #18794e;
+    background: #dcfce7;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+}
+
+.zone-badge {
+    color: var(--azul-oscuro);
+    background: #e9edff;
+}
+
+/* BOTONES */
+.parking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.btn-primary {
+    background: var(--azul);
+    border-color: var(--azul);
+}
+
+.btn-primary:hover {
+    background: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+}
+
+.btn-outline-primary {
+    color: var(--azul);
+    border-color: var(--azul);
+}
+
+.btn-outline-primary:hover {
+    color: var(--blanco);
+    background: var(--azul);
+    border-color: var(--azul);
+}
+
+/* INFORMACIÓN RÁPIDA */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    min-width: 0;
+    padding: 22px 16px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 17px;
+    box-shadow: var(--sombra);
+}
+
+.info-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+}
+
+.info-card p {
+    margin-bottom: 8px;
+    color: var(--gris);
+    font-size: .85rem;
+}
+
+.info-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+}
+
+/* TARJETAS DE INFORMACIÓN */
+.content-card,
+.help-card,
+.booking-card {
+    padding: 25px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 19px;
+    box-shadow: var(--sombra);
+}
+
+.content-card > p {
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row span {
+    color: var(--gris);
+    flex: 0 0 40%;
+}
+
+.detail-row strong {
+    color: var(--azul-oscuro);
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* SERVICIOS */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.service-button {
+    padding: 14px;
+    background: #f5f7ff;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    text-align: left;
+    transition: .2s ease;
+}
+
+.service-button:hover,
+.service-button.active {
+    background: #e7edff;
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.service-description {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    color: var(--gris);
+    line-height: 1.6;
+}
+
+/* RESERVACIÓN */
+.booking-card {
+    position: sticky;
+    top: 20px;
+}
+
+.price-display {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    margin: 20px 0;
+}
+
+.price-display span {
+    color: var(--azul);
+    font-size: 2.2rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.price-display small {
+    color: var(--gris);
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: .9rem;
+}
+
+.summary-line span {
+    color: var(--gris);
+}
+
+.summary-line strong {
+    color: var(--azul-oscuro);
+    text-align: right;
+}
+
+.small-note {
+    color: var(--gris);
+    font-size: .76rem;
+    line-height: 1.6;
+}
+
+.help-card h3 {
+    font-size: 1.1rem;
+}
+
+/* MODAL */
+.modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-header,
+.modal-footer {
+    padding: 18px 22px;
+    border-color: var(--borde);
+}
+
+.modal-body {
+    padding: 22px;
+}
+
+.form-control {
+    min-height: 45px;
+    border-color: var(--borde);
+    border-radius: 9px;
+}
+
+.form-control:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 .2rem rgba(85,126,247,.15);
+}
+
+.cost-box {
+    padding: 18px;
+    background: #f3f5fc;
+    border-radius: 12px;
+}
+
+.total-price {
+    color: var(--azul);
+    font-size: 1.35rem;
+}
+
+.form-message {
+    color: var(--gris);
+    font-size: .9rem;
+}
+
+/* NOTIFICACIONES */
+.toast {
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+@media (max-width: 991.98px) {
+
+    main.container {
+        padding-top: 25px !important;
+        padding-bottom: 35px !important;
+    }
+
+    .booking-card {
+        position: static;
+    }
+
+    .parking-illustration {
+        min-height: 200px;
+    }
+
+    .info-grid {
+        gap: 12px;
+    }
+
+    .info-card {
+        padding: 18px 12px;
+    }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+@media (max-width: 767.98px) {
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    main.container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .parking-illustration {
+        min-height: 175px;
+    }
+
+    .parking-content {
+        padding: 20px;
+    }
+
+    .parking-actions {
+        flex-direction: column;
+    }
+
+    .parking-actions .btn {
+        width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px;
+    }
+
+    .info-icon {
+        margin: 0;
+    }
+
+    .info-card p {
+        margin: 0;
+    }
+
+    .info-card h3 {
+        margin-left: auto;
+        font-size: 1rem;
+        text-align: right;
+    }
+
+    .content-card,
+    .booking-card,
+    .help-card {
+        padding: 19px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .detail-row span,
+    .detail-row strong {
+        flex: auto;
+        width: 100%;
+        text-align: left;
+    }
+
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .service-button {
+        width: 100%;
+    }
+
+    .price-display span {
+        font-size: 1.9rem;
+    }
+
+    .summary-line {
+        font-size: .85rem;
+    }
+
+    .modal-dialog {
+        margin: 12px;
+    }
+
+    .modal-body {
+        padding: 17px;
+    }
+}
+
+/* =========================================
+   CELULARES PEQUEÑOS
+========================================= */
+@media (max-width: 380px) {
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .parking-content {
+        padding: 16px;
+    }
+
+    .content-card,
+    .booking-card,
+    .help-card {
+        padding: 15px;
+    }
+
+    .status-badge,
+    .zone-badge {
+        font-size: .72rem;
+    }
+
+    .price-display span {
+        font-size: 1.65rem;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 14px;
+    }
+}
+
+
+
+/* =========================================
+   AUTOPARK - IDENTIDAD VISUAL COMPARTIDA
+   Ajustes para coincidir con busqueda.css
+========================================= */
+
+:root {
+    --azul: #475467;
     --azul-oscuro: #101828;
+    --fondo: #e3e8f8;
+    --rosa: #83d5e2;
+    --blanco: #ffffff;
+    --texto: #344054;
+    --gris: #475467;
+    --borde: #b8c9e5;
+    --tarjeta: #ffffff;
+    --sombra: 0 2px 6px rgba(16, 24, 40, .06);
+
+    --azul-fondo: #e3e8f8;
     --azul-principal: #475467;
     --azul-claro: #c5e2ff;
     --azul-borde: #b8c9e5;
     --gris-fondo: #e3e8f8;
-    --blanco: #fff;
     --gris-texto: #344054;
     --gris-secundario: #475467;
     --gris-borde: #b8c9e5;
     --turquesa: #83d5e2;
-  
-    --radius-small: 8px;
-    --radius-medium: 12px;
-    --radius-large: 18px;
-  
-    --shadow-card: 0 2px 6px rgba(16, 24, 40, .06);
-    --shadow-hover: 0 6px 18px rgba(16, 24, 40, .12);
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    margin: 0;
-    min-height: 100vh;
+}
+
+/* Tipografía y fondo compartidos */
+body {
     background: var(--gris-fondo);
     color: var(--azul-oscuro);
     font-family: "Raleway", sans-serif;
-  }
-  
-  /* Barra de navegación */
-  .autopark-navbar {
+}
+
+h1, h2, h3,
+.navbar-autopark .nav-link,
+.navbar-autopark .navbar-brand {
+    color: var(--azul-oscuro);
+}
+
+.muted,
+.subtitle,
+.detail-row span,
+.summary-line span,
+.small-note {
+    color: var(--gris-secundario);
+}
+
+/* Navbar: mismo azul claro que la página de búsqueda */
+.navbar-autopark {
     min-height: 76px;
     background: var(--azul-claro);
     border-bottom: 1px solid rgba(16, 24, 40, .08);
     padding: 12px 0;
-  }
-  
-  .navbar-brand {
-    color: var(--azul-oscuro) !important;
-    text-decoration: none;
+}
+
+.navbar-autopark .navbar-brand {
+    color: var(--azul-oscuro);
     font-weight: 700;
-  }
-  
-  .logo-navbar {
+    text-decoration: none;
+}
+
+.navbar-autopark .nav-link {
+    padding: 10px 14px;
+    border-radius: 20px;
+    color: var(--azul-oscuro);
+    font: 14px "Roboto Mono", monospace;
+}
+
+.navbar-autopark .nav-link:hover {
+    color: var(--azul-oscuro);
+    background: rgba(255, 255, 255, .55);
+}
+
+.navbar-autopark .nav-link.active {
+    color: var(--azul-oscuro);
+    background: var(--blanco);
+}
+
+.navbar-autopark .navbar-toggler {
+    border-color: var(--azul-borde);
+}
+
+.navbar-autopark .logo {
     width: 48px;
     height: 48px;
     object-fit: contain;
-  }
-  
-  .brand-name {
-    font-size: 22px;
-  }
-  
-  .nav-link {
-    padding: 10px 14px !important;
-    border-radius: 20px;
-    color: var(--azul-oscuro) !important;
-    font: 14px "Roboto Mono", monospace;
-  }
-  
-  .nav-link:hover {
-    background: rgba(255, 255, 255, .55);
-  }
-  
-  .nav-link.active {
-    background: var(--blanco);
-  }
-  
-  /* Contenido principal */
-  .main-container {
-    padding-top: 32px;
-    padding-bottom: 48px;
-  }
-  
-  .page-header {
-    margin-bottom: 32px;
-  }
-  
-  .page-header h1 {
-    margin: 0 0 12px;
+}
+
+/* Encabezados y textos */
+h1 {
     font-size: clamp(30px, 4vw, 42px);
     font-weight: 700;
     letter-spacing: -.6px;
-  }
-  
-  .page-header p,
-  .results-header > div > p {
-    margin: 0;
-    color: var(--gris-secundario);
-    font: 14px/1.7 "Roboto Mono", monospace;
-  }
-  
-  /* Panel de búsqueda */
-  .search-panel {
-    padding: 24px;
-    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+.eyebrow,
+.back-link {
+    color: var(--azul-principal);
+}
+
+.subtitle,
+.muted {
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Tarjetas con el mismo borde, radio y sombra de búsqueda */
+.parking-hero,
+.info-card,
+.content-card,
+.help-card,
+.booking-card {
     background: var(--blanco);
     border: 1px solid var(--gris-borde);
-    border-radius: var(--radius-large);
-    box-shadow: var(--shadow-card);
-  }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  
-  .form-control,
-  .form-select {
-    min-height: 48px;
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radius-small);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card, 0 2px 6px rgba(16, 24, 40, .06));
+}
+
+.parking-illustration {
+    background: linear-gradient(135deg, var(--azul-claro), #e3e8f8);
+}
+
+.parking-sign {
+    background: var(--azul-principal);
+}
+
+.parking-content {
     color: var(--azul-oscuro);
-    font: 13px "Roboto Mono", monospace;
-    padding: 12px;
-    box-shadow: none;
-  }
-  
-  .form-control:focus,
-  .form-select:focus {
-    border-color: var(--azul-principal);
-    box-shadow: 0 0 0 3px rgba(71, 84, 103, .14);
-  }
-  
-  /* Botones */
-  .btn {
+}
+
+.status-badge {
+    color: #173d49;
+    background: var(--turquesa);
+}
+
+.zone-badge {
+    color: var(--azul-oscuro);
+    background: var(--azul-claro);
+}
+
+/* Botones con la misma forma y tipografía de búsqueda */
+.btn {
     min-height: 42px;
     padding: 10px 18px;
     border-radius: 24px;
     font: 12px "Roboto Mono", monospace;
-    transition: background .2s, transform .2s;
-  }
-  
-  .btn:hover {
+    transition: background .2s, color .2s, transform .2s;
+}
+
+.btn:hover {
     transform: translateY(-1px);
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
+    color: #fff;
     background: var(--azul-principal);
     border-color: var(--azul-principal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
     color: #fff;
-  }
-  
-  .btn-primary:hover,
-  .btn-primary:focus {
     background: #344054;
     border-color: #344054;
-    color: #fff;
-  }
-  
-  .btn-search {
-    min-height: 48px;
-  }
-  
-  /* Filtros por zona */
-  .filters-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .filter-btn {
-    min-height: 42px;
-    padding: 9px 20px;
-    border: 1px solid var(--gris-borde);
-    border-radius: 24px;
-    background: var(--blanco);
-    color: var(--gris-texto);
-    font: 12px "Roboto Mono", monospace;
-    cursor: pointer;
-    transition: background .2s, color .2s;
-  }
-  
-  .filter-btn:hover {
-    border-color: var(--azul-principal);
-  }
-  
-  .filter-btn.active {
-    background: var(--azul-principal);
-    border-color: var(--azul-principal);
-    color: #fff;
-  }
-  
-  /* Ordenamiento */
-  .sort-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .sort-container label {
-    white-space: nowrap;
-    color: var(--gris-secundario);
-    font: 12px "Roboto Mono", monospace;
-  }
-  
-  .sort-select {
-    width: 230px;
-    min-height: 42px;
-  }
-  
-  /* Encabezado de resultados */
-  .results-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  
-  .results-header h2 {
-    margin: 0 0 8px;
-    font-size: 26px;
-    font-weight: 700;
-  }
-  
-  .btn-clear {
-    min-height: 40px;
-    padding: 8px 16px;
-    font-size: 11px;
-    border-radius: 22px;
-  }
-  
-  /* Tarjetas de estacionamientos */
-  .parking-card {
-    height: 100%;
-    padding: 24px;
-    background: var(--blanco);
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radius-large);
-    box-shadow: var(--shadow-card);
-    transition: transform .2s, box-shadow .2s;
-  }
-  
-  .parking-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-hover);
-  }
-  
-  .parking-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .parking-icon {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 90px;
-    height: 90px;
-    background: var(--azul-claro);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .parking-icon img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-  }
-  
-  .parking-info {
-    flex: 1;
-    min-width: 0;
-  }
-  
-  .parking-name {
-    margin: 0 0 8px;
-    font-size: 19px;
-    font-weight: 700;
-    overflow-wrap: anywhere;
-  }
-  
-  .parking-location {
-    margin: 0;
-    color: var(--gris-secundario);
-    font: 12px/1.6 "Roboto Mono", monospace;
-  }
-  
-  .available-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 9px 14px;
-    border-radius: 24px;
-    background: var(--turquesa);
-    color: #173d49;
-    font: 11px "Roboto Mono", monospace;
-    white-space: nowrap;
-  }
-  
-  .parking-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding-top: 18px;
-    border-top: 1px solid #eaecf0;
-  }
-  
-  .detail-item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .detail-label {
-    color: var(--gris-secundario);
-    font: 11px "Roboto Mono", monospace;
-  }
-  
-  .detail-value {
-    color: var(--azul-oscuro);
-    font: 600 13px "Roboto Mono", monospace;
-  }
-  
-  .parking-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-top: 18px;
-  }
-  
-  .distance {
-    color: var(--gris-secundario);
-    font: 11px "Roboto Mono", monospace;
-  }
-  
-  .btn-details {
-    min-height: 38px;
-    padding: 8px 16px;
-    border: 1px solid var(--azul-principal);
-    border-radius: 24px;
-    background: var(--blanco);
+}
+
+.btn-outline-primary {
     color: var(--azul-principal);
-    font: 11px "Roboto Mono", monospace;
-    cursor: pointer;
-    transition: background .2s, color .2s;
-  }
-  
-  .btn-details:hover {
-    background: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-outline-primary:hover {
     color: #fff;
-  }
-  
-  /* Mensaje cuando no hay resultados */
-  .no-results {
-    padding: 48px 24px;
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radius-large);
-    background: var(--blanco);
-    text-align: center;
-  }
-  
-  .no-results-icon {
-    margin-bottom: 12px;
-    font-size: 42px;
-  }
-  
-  .no-results h3 {
-    font-size: 22px;
-    font-weight: 700;
-  }
-  
-  .no-results p {
-    margin-bottom: 20px;
+    background: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-outline-secondary {
     color: var(--gris-secundario);
-    font: 12px/1.7 "Roboto Mono", monospace;
-  }
-  
-  /* Ventanas modales */
-  .autopark-modal {
-    overflow: hidden;
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radius-large);
-    background: var(--blanco);
+    border-color: var(--gris-borde);
+}
+
+/* Información, servicios y resumen */
+.info-card {
+    box-shadow: 0 2px 6px rgba(16, 24, 40, .06);
+}
+
+.info-card p,
+.detail-row span,
+.summary-line span {
+    font: 11px "Roboto Mono", monospace;
+    color: var(--gris-secundario);
+}
+
+.info-card h3,
+.detail-row strong,
+.summary-line strong {
     color: var(--azul-oscuro);
-  }
-  
-  .modal-header {
-    padding: 20px 24px;
+}
+
+.detail-row {
+    border-bottom-color: #eaecf0;
+}
+
+.service-button {
+    background: #f7f9fc;
+    border-color: var(--gris-borde);
+    color: var(--azul-oscuro);
+    font: 12px "Roboto Mono", monospace;
+}
+
+.service-button:hover,
+.service-button.active {
+    background: var(--azul-claro);
+    border-color: var(--azul-principal);
+    color: var(--azul-oscuro);
+}
+
+.service-description,
+.cost-box {
+    background: var(--gris-fondo);
+    color: var(--gris-secundario);
+}
+
+.price-display span,
+.total-price {
+    color: var(--azul-principal);
+}
+
+.summary-line {
+    border-bottom-color: #eaecf0;
+}
+
+/* Modal y notificaciones */
+.modal-content {
+    border: 1px solid var(--gris-borde);
+    border-radius: 18px;
+}
+
+.modal-header {
     background: var(--azul-claro);
     border-bottom: 1px solid var(--gris-borde);
-  }
-  
-  .modal-title {
-    font-size: 20px;
+}
+
+.modal-title {
+    color: var(--azul-oscuro);
     font-weight: 700;
-  }
-  
-  .modal-body {
-    padding: 24px;
-  }
-  
-  .modal-parking-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 84px;
-    height: 84px;
-    margin: 0 auto 24px;
-    border-radius: 12px;
-    background: var(--azul-claro);
-  }
-  
-  .modal-parking-logo img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-  }
-  
-  .modal-info p {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 0;
-    padding: 12px 0;
-    border-bottom: 1px solid #eaecf0;
-    font: 12px "Roboto Mono", monospace;
-  }
-  
-  .modal-info p:last-child {
-    border-bottom: 0;
-  }
-  
-  .modal-info strong {
-    color: var(--gris-secundario);
-    font-weight: 500;
-  }
-  
-  .modal-info span {
-    text-align: right;
-    overflow-wrap: anywhere;
-  }
-  
-  .modal-footer {
-    padding: 16px 24px;
+}
+
+.modal-footer {
     border-top: 1px solid var(--gris-borde);
-  }
-  
-  .reservation-name {
-    font-size: 17px;
-    font-weight: 700;
-  }
-  
-  /* Total de la reserva */
-  .total-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 18px;
-    border: 1px solid var(--gris-borde);
-    border-radius: 12px;
-    background: var(--gris-fondo);
-  }
-  
-  .total-card span,
-  .total-card small {
-    color: var(--gris-secundario);
-    font: 11px "Roboto Mono", monospace;
-  }
-  
-  .total-card strong {
-    font: 600 20px "Roboto Mono", monospace;
-  }
-  
-  /* Notificaciones */
-  .toast {
+}
+
+.form-control {
+    font: 13px "Roboto Mono", monospace;
+    border-color: var(--gris-borde);
+}
+
+.form-control:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(71, 84, 103, .14);
+}
+
+.toast {
     background: var(--azul-principal);
     color: #fff;
     border-radius: 12px;
-  }
-  
-  /* Diseño adaptable para tabletas */
-  @media (max-width: 991.98px) {
-    .main-container {
-      padding-top: 24px;
+}
+
+/* Ajustes responsivos del menú */
+@media (max-width: 991.98px) {
+    .navbar-autopark .navbar-nav {
+        margin-top: 16px;
     }
-  
-    .navbar-nav {
-      margin-top: 16px;
+
+    .navbar-autopark .nav-link {
+        border-radius: 8px;
     }
-  
-    .nav-link {
-      border-radius: 8px;
+}
+
+/* Evitar desbordamientos en móviles */
+@media (max-width: 767.98px) {
+    .navbar-autopark .navbar-nav {
+        align-items: stretch !important;
     }
-  
-    .filters-section {
-      align-items: flex-start;
+
+    .navbar-autopark .nav-link {
+        width: 100%;
     }
-  
-    .sort-container {
-      width: 100%;
-      justify-content: flex-start;
+
+    .parking-content,
+    .content-card,
+    .booking-card,
+    .help-card {
+        min-width: 0;
     }
-  }
-  
-  /* Diseño adaptable para celulares */
-  @media (max-width: 767.98px) {
-    .main-container {
-      padding: 24px 16px 40px;
+
+    .parking-actions .btn {
+        width: 100%;
     }
-  
-    .page-header {
-      margin-bottom: 24px;
-    }
-  
-    .page-header h1 {
-      font-size: 30px;
-    }
-  
-    .page-header p {
-      font-size: 11px;
-    }
-  
-    .search-panel {
-      padding: 18px;
-    }
-  
-    .filters-section {
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-  
-    .filter-buttons {
-      width: 100%;
-    }
-  
-    .filter-btn {
-      flex: 1;
-      min-width: 70px;
-      padding: 9px 10px;
-    }
-  
-    .sort-container {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 6px;
-    }
-  
-    .sort-select {
-      width: 100%;
-    }
-  
-    .results-header {
-      align-items: flex-start;
-    }
-  
-    .results-header h2 {
-      font-size: 22px;
-    }
-  
-    .parking-card {
-      padding: 18px;
-    }
-  
-    .parking-top {
-      gap: 12px;
-    }
-  
-    .parking-icon {
-      width: 68px;
-      height: 68px;
-    }
-  
-    .parking-name {
-      font-size: 16px;
-    }
-  
-    .available-badge {
-      font-size: 9px;
-      padding: 7px 9px;
-    }
-  
-    .modal-info p {
-      flex-direction: column;
-      gap: 5px;
-    }
-  
-    .modal-info span {
-      text-align: left;
-    }
-  }
-  
-  /* Ajustes para celulares pequeños */
-  @media (max-width: 400px) {
-    .filter-btn {
-      flex: 0 0 calc(50% - 4px);
-    }
-  
-    .results-header {
-      flex-direction: column;
-    }
-  
-    .parking-top {
-      flex-wrap: wrap;
-    }
-  
-    .parking-info {
-      min-width: calc(100% - 80px);
-    }
-  
-    .available-badge {
-      margin-left: 0;
-    }
-  
-    .parking-footer {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  
-    .btn-details {
-      width: 100%;
-    }
-  }
-  
-/* Corrección de la distribución de las tarjetas */
-.parking-card {
-    min-width: 0;
-    padding: 22px;
-  }
-  
-  .parking-top {
-    display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 12px;
-    align-items: start;
-  }
-  
-  .parking-icon {
-    width: 76px;
-    height: 76px;
-  }
-  
-  .parking-info {
-    min-width: 0;
-    overflow-wrap: normal;
-    word-break: normal;
-  }
-  
-  .parking-name {
-    font-size: 17px;
-    line-height: 1.35;
-    overflow-wrap: break-word;
-    word-break: normal;
-  }
-  
-  .parking-location {
-    overflow-wrap: break-word;
-    word-break: normal;
-    line-height: 1.6;
-  }
-  
-  .available-badge {
-    grid-column: 1 / -1;
-    justify-self: start;
-    margin-top: 2px;
-    white-space: normal;
-  }
-  
-  .parking-footer {
-    flex-wrap: wrap;
-  }
-  
-  .distance {
-    overflow-wrap: break-word;
-  }
-  
-  @media (min-width: 768px) {
-    .parking-top {
-      grid-template-columns: 76px minmax(0, 1fr);
-    }
-  
-    .available-badge {
-      grid-column: 2;
-      margin-top: -4px;
-    }
-  }
-  
-  @media (max-width: 400px) {
-    .parking-top {
-      grid-template-columns: 64px minmax(0, 1fr);
-    }
-  
-    .parking-icon {
-      width: 64px;
-      height: 64px;
-    }
-  }
-  
+}
+/* CORREGIR TAMAÑO DEL LOGO EN LAS TARJETAS */
+.parking-card .parking-icon {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.parking-card .parking-icon img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}

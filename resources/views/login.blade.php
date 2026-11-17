@@ -2,46 +2,24 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Iniciar sesión - AutoPark</title>
 
-    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-
-    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-
-    <link
-        rel="stylesheet"
-        href="components/navbar/navbar.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/login.css"
-    >
-
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/navbar/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
-
 
 <body data-navbar-mode="guest">
 
-    <!-- NAVBAR REUTILIZABLE -->
-    <div id="navbar"></div>
-
+    @include('components.navbar')
 
     <main class="login-page">
 
-
         <!-- PANEL IZQUIERDO -->
-
         <section class="login-welcome">
-
             <div class="welcome-content">
 
                 <h1>
@@ -54,135 +32,73 @@
                     y espacios desde AutoPark.
                 </p>
 
-
                 <div class="welcome-card">
-
                     <p>• Consulta disponibilidad</p>
-
                     <p>• Revisa tus reservas</p>
-
                     <p>• Gestiona tus espacios</p>
-
                 </div>
 
             </div>
-
         </section>
 
-
-
         <!-- PANEL DERECHO -->
-
         <section class="login-area">
 
             <div class="login-card">
 
                 <h2>Iniciar sesión</h2>
 
-
                 <form id="loginForm">
 
-
                     <!-- CORREO -->
-
                     <div class="form-group">
+                        <label for="email">Correo electrónico</label>
 
-                        <label for="email">
-                            Correo electrónico
-                        </label>
-
-                        <input class="form-control"
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="correo@ejemplo.com"
-                            required
-                        >
-
+                        <input class="form-control" type="email" id="email" name="email"
+                            placeholder="correo@ejemplo.com" required>
                     </div>
-
 
                     <!-- CONTRASEÑA -->
-
                     <div class="form-group">
+                        <label for="password">Contraseña</label>
 
-                        <label for="password">
-                            Contraseña
-                        </label>
-
-                        <input class="form-control"
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="••••••••"
-                            required
-                        >
-
+                        <input class="form-control" type="password" id="password" name="password"
+                            placeholder="••••••••" required>
                     </div>
 
-
                     <!-- OPCIONES -->
-
                     <div class="login-options">
 
                         <label class="remember-option">
+                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
 
-                            <input class="form-check-input"
-                                type="checkbox"
-                                id="remember"
-                                name="remember"
-                            >
-
-                            <span>
-                                Mantener sesión iniciada
-                            </span>
-
+                            <span>Mantener sesión iniciada</span>
                         </label>
 
-
-                        <a
-                            href="#"
-                            class="forgot-password"
-                        >
+                        <a href="#" class="forgot-password">
                             ¿Olvidaste tu contraseña?
                         </a>
 
                     </div>
 
-
                     <!-- MENSAJE -->
-
-                    <p
-                        id="loginMessage"
-                        class="login-message"
-                    ></p>
-
+                    <p id="loginMessage" class="login-message"></p>
 
                     <!-- ENTRAR -->
-
-                    <button
-                        type="submit"
-                        class="btn btn-login"
-                    >
+                    <button type="submit" class="btn btn-login">
                         Entrar
                     </button>
 
-
                     <div class="login-divider"></div>
-
 
                     <p class="register-text">
                         ¿Aún no tienes cuenta?
                     </p>
 
-
-                    <a
-                        href="registro.html"
-                        class="btn-register"
-                    >
+                    <!-- REGISTRO LARAVEL -->
+                    <a href="{{ route('registro') }}" class="btn-register">
                         Crear cuenta
                     </a>
-
 
                 </form>
 
@@ -192,43 +108,9 @@
 
     </main>
 
-
-
-    <!-- CARGAR NAVBAR -->
-
-    <script>
-
-        fetch("components/navbar/navbar.html")
-
-            .then(response => response.text())
-
-            .then(data => {
-
-                document.getElementById("navbar").innerHTML = data;
-
-                const script =
-                    document.createElement("script");
-
-                script.src =
-                    "components/navbar/navbar.js";
-
-                document.body.appendChild(script);
-
-            })
-
-            .catch(error => {
-
-                console.error(
-                    "Error al cargar el navbar:",
-                    error
-                );
-
-            });
-
-    </script>
-
-
-    <script src="js/login.js"></script>
+    <!-- SCRIPTS -->
+    <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 
 </body>
 
