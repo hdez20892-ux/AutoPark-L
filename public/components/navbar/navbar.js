@@ -1,193 +1,119 @@
 /* =========================
-   NAVEGACIÓN Y SESIÓN
+   NAVEGACIÓN Y SESIÓN (LARAVEL)
 ========================= */
 
-const logoutButton =
-    document.getElementById("logoutButton");
+const logoutButton = document.getElementById("logoutButton");
+const navbarBrand = document.getElementById("navbarBrand");
+const navbarHome = document.getElementById("navbarHome");
 
-const navbarBrand =
-    document.getElementById("navbarBrand");
+const currentPath = window.location.pathname;
 
-const navbarHome =
-    document.getElementById("navbarHome");
+// Mapa para convertir enlaces estáticos .html de navbar.html a rutas de Laravel
+const mapaRutasLaravel = {
+    "index.html": "/",
+    "inicio.html": "/",
+    "login.html": "/login",
+    "registro.html": "/registro",
+    "busqueda.html": "/busqueda",
+    "nosotros.html": "/nosotros",
+    "servicios.html": "/servicios",
+    "contacto.html": "/contacto",
+    "perfil.html": "/perfil",
+    "reservas.html": "/reservas",
+    "espacios.html": "/estacionamientos"
+};
 
-const currentPage =
-    window.location.pathname
-        .split("/")
-        .pop() || "index.html";
+document.querySelectorAll("#navbar a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
 
-/*
-==========================================
-IMPORTANTE - BACKEND
-==========================================
+    const archivo = href.split("/").pop();
+    if (mapaRutasLaravel[archivo]) {
+        link.setAttribute("href", mapaRutasLaravel[archivo]);
+    }
+});
 
-Esta comprobación es TEMPORAL.
-Cuando exista backend, deberá sustituirse
-por la validación real de sesión/token.
-==========================================
-*/
-
+// Detectar modo de sesión desde Blade (data-navbar-mode) o localStorage
+const modoBlade = document.body.dataset.navbarMode;
 const sesionActiva =
+    modoBlade === "user" ||
     localStorage.getItem("sesionActiva") === "true";
 
 const paginasPrivadas = [
-    "inicio.html",
-    "reservas.html",
-    "espacios.html",
-    "perfil.html"
+    "/reservas",
+    "/estacionamientos",
+    "/perfil"
 ];
 
-if (
-    paginasPrivadas.includes(currentPage) &&
-    !sesionActiva
-) {
-    const destinoOriginal =
-        window.location.pathname +
-        window.location.search +
-        window.location.hash;
-
-    sessionStorage.setItem(
-        "redirectAfterLogin",
-        destinoOriginal
-    );
-
-    window.location.replace("login.html");
+if (paginasPrivadas.includes(currentPath) && !sesionActiva) {
+    sessionStorage.setItem("redirectAfterLogin", currentPath);
+    window.location.replace("/login");
 }
 
-const paginaInicio =
-    sesionActiva
-        ? "inicio.html"
-        : "index.html";
-
 if (navbarBrand) {
-    navbarBrand.href = paginaInicio;
+    navbarBrand.href = "/";
 }
 
 if (navbarHome) {
-    navbarHome.href = paginaInicio;
+    navbarHome.href = "/";
 }
 
-const paginasDeAcceso = [
-    "login.html",
-    "registro.html"
-];
+const paginasDeAcceso = ["/login", "/registro"];
 
-if (paginasDeAcceso.includes(currentPage)) {
+if (paginasDeAcceso.includes(currentPath)) {
     document.body.dataset.navbarMode = "guest";
-} else {
-    document.body.dataset.navbarMode =
-        sesionActiva
-            ? "user"
-            : "guest";
+} else if (!modoBlade) {
+    document.body.dataset.navbarMode = sesionActiva ? "user" : "guest";
 }
-
 
 /* =========================
    PÁGINA ACTIVA
 ========================= */
 
-document
-    .querySelectorAll(".nav-link")
-    .forEach(link => {
+document.querySelectorAll(".nav-link").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
 
-        const href =
-            link.getAttribute("href");
-
-        if (!href) {
-            return;
-        }
-
-        const linkPage =
-            href
-                .split("/")
-                .pop();
-
-        if (
-            linkPage === currentPage &&
-            link.offsetParent !== null
-        ) {
-            link.classList.add("active");
-            link.setAttribute(
-                "aria-current",
-                "page"
-            );
-        }
-
-    });
-
+    if (href === currentPath && link.offsetParent !== null) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+    }
+});
 
 /* =========================
    CERRAR COLLAPSE AL NAVEGAR
 ========================= */
 
-document
-    .querySelectorAll("#navbarLinks a.nav-link")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                const collapseElement =
-                    document.getElementById(
-                        "navbarLinks"
-                    );
-
-                if (
-                    collapseElement &&
-                    window.bootstrap
-                ) {
-                    const instance =
-                        bootstrap.Collapse.getInstance(
-                            collapseElement
-                        );
-
-                    if (instance) {
-                        instance.hide();
-                    }
-                }
-
+document.querySelectorAll("#navbarLinks a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        const collapseElement = document.getElementById("navbarLinks");
+        if (collapseElement && window.bootstrap) {
+            const instance = bootstrap.Collapse.getInstance(collapseElement);
+            if (instance) {
+                instance.hide();
             }
-        );
-
+        }
     });
-
+});
 
 /* =========================
    CERRAR SESIÓN
 ========================= */
 
 if (logoutButton) {
-    logoutButton.addEventListener(
-        "click",
-        cerrarSesion
-    );
+    logoutButton.addEventListener("click", cerrarSesion);
 }
 
-function cerrarSesion() {
-
-    /*
-    ==========================================
-    IMPORTANTE - BACKEND
-    ==========================================
-    Reemplazar posteriormente por el logout
-    real del servidor.
-    ==========================================
-    */
+function cerrarSesion(e) {
+    if (e) e.preventDefault();
 
     localStorage.removeItem("sesionActiva");
     localStorage.removeItem("usuarioSesion");
     localStorage.removeItem("usuarioActual");
 
-    sessionStorage.removeItem(
-        "estacionamientoSeleccionado"
-    );
-    sessionStorage.removeItem(
-        "reservaPendiente"
-    );
-    sessionStorage.removeItem(
-        "redirectAfterLogin"
-    );
+    sessionStorage.removeItem("estacionamientoSeleccionado");
+    sessionStorage.removeItem("reservaPendiente");
+    sessionStorage.removeItem("redirectAfterLogin");
 
-    window.location.href = "index.html";
+    window.location.href = "/";
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\EstacionamientoController;
+use App\Http\Controllers\AuthController;
 
 // Página principal
 Route::get('/', function () {
@@ -58,9 +59,11 @@ Route::get('/contacto', function () {
     return view('contacto'); 
 })->name('contacto');
 
-Route::get('/login', function () {
-    return view('login'); 
-})->name('login');
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/perfil', function () {
     return view('perfil'); 

@@ -6,15 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AutoPark</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('components/navbar/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 </head>
 
-<body>
+<body data-navbar-mode="{{ Auth::check() ? 'user' : 'guest' }}">
 
     @include('components.navbar')
+
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show text-center mb-0 rounded-0" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    @endif
+
+    @auth
+        <div class="alert alert-primary text-center mb-0 rounded-0 py-2">
+            Sesión iniciada como <strong>{{ Auth::user()->name }}</strong> ({{ Auth::user()->email }}) · Tipo de cuenta: <strong>{{ ucfirst(Auth::user()->tipo_cuenta) }}</strong>
+        </div>
+    @endauth
 
     <main>
 
